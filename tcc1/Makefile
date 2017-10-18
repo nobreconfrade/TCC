@@ -4,6 +4,8 @@ main:
 	bibtex main
 	pdflatex main
 	pdflatex main
+	rm -f *.log *.dvi *.lof *.lot *.nlo *.out *.toc *.aux *.bak *.bbl *.blg *.gz *.fdb_latexmk *.fls *.log *.synctex.gz
+
 
 .PHONY: x
 x:
