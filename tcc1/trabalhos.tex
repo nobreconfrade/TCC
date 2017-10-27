@@ -1,6 +1,21 @@
 \chapter{\textit{Trabalhos Relacionados}}
 	\label{ch:trabalhos}
-Nesta seção será comentado sobre alguns trabalhos que possuem um objetivo similar ou utilizam tecnologias similiares a este. 
+Nesta seção será comentado sobre alguns trabalhos que possuem um objetivo similar ou utilizam tecnologias similares a este. 
+
+O trabalho de \cite{gprsTelemetrySystem2013} propõe uma solução de telemetria para um veiculo de competição elétrico. A proposta é similar a do trabalho proposto no quesito de manter a equipe em questão atualizada dos dados provindos do carro, a diferença é que o veículo é movida a energia limpa, elétrica. Este requisito altera também a algumas das grandezas a serem analisadas pelo sistema, nele são verificados fatores como amperes por hora, voltagem, velocidade e distancia percorrida. Infelizmente o trabalho não comenta como é feita a coleta dos dados pelos sensores, apenas comentando que existe um equipamento que faz o mesmo. Para parte de telemetria, os desenvolvedores comentam que trabalharam com foco em resolver dois problemas: Robustez sobre todo o circuito de provas e segurança dos dados, além de redução do ruído. Portanto duas tecnologias foram analisadas para a transmissão dos dados embarcados do veículo até os computadores da equipe, a de radio frequência e a rede móvel de celular (GPRS). A ultima foi escolhida devido a "(...) Impossibilidade de garantir a comunicação entre todos os circuitos devido aos formatos e obstáculos encontrados no terreno...", também é comentado que foram realizados testes e todos os circuitos possuem cobertura de sinal móvel. Por ultimo é desenvolvido um software para receber os dados provenientes do veículo. O sistema de aquisição de dados teve seu funcionamento dividido em quatro blocos, sendo eles: Configuração do aplicativo e do canal transmissão de dados usado; Informações específicas da direção do piloto e do circuito percorrido; Valores numéricos dos dados técnicos mais importantes para a manutenção do veículo em tempo real; Representação gráfica de toda a informação recebida durante todo o processo da prova. Com isto e o tratamento das informações, o programa apresenta para a equipe de boxes informações como:
+
+\begin{itemize}
+	\item Consumo de energia; 
+	\item Voltagem da bateria;
+	\item Velocidade;
+	\item Distância percorrida;
+	\item Eficiência energética; 
+\end{itemize}
+
+Todas estas informações disponíveis são muito interessantes, porém \cite{gprsTelemetrySystem2013} não se aprofunda na sua construção, o que poderia aumentar em muito a relevância deste trabalho para o projeto proposto. Como é comentado, existe um indício de emprego de técnicas de engenharia de software na criação do sistema de aquisição de dados, porém por não ser o foco do trabalho, as mesmas não são citadas. 
+
+Outro trabalho que também usa energia limpa é \cite{applicationOfData2010} com 
+
 
 Foram encontrados alguns trabalhos com objetivo similar, como \cite{Dias2010} e \cite{Nunes2016} que tem propostas para criação de um sistema de telemetria para a modalidade baja SAE com um cenário muito similar ao denotado neste trabalho de conclusão de curso. \cite{Dias2010} Tem como foco a pesquisa, projeto e execução da parte de \textit{hardware} do sistema de telemetria, deixando a parte de \textit{software} para um segundo trabalho. Já \cite{Nunes2016} utiliza parte do que já foi projetado em outros anos na equipe Car-Kará para projetar um sistema completo de telemtria com duas ECUs, incluindo \textit{software} e \textit{hardware}.  
 
