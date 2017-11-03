@@ -3,6 +3,15 @@
 
 A área de telemetria, aquisição de dados e sensoriamento em geral de um veículo é usada de forma extensiva competições automobilisticas aonde amostragem em tempo real é necessária para centenas de sensores que permitem aos engenheiros manterem o rastreamento da performance do \textit{powertrain}, parametros de dirigibilidade como configurações de suspensão e temperatura dos pneus \cite{designAndImplementation2015}. Estes dados são fundamentais para que os engenheiros e pilotos consigam acertar o carro a fim de obter tempo de voltas mais rapidos, além de melhor manutenção do carro de forma geral.
 
+Alguns problemas do cenário de veículos \textit{off-road} podem ser levantados, \cite{projetoMiniBaja2006} trás alguns avisos sobre problemas que são comumente encontrados em situações de extremo esforço para o conjunto mecânico e eletrônico, como em uma prova de enduro do baja SAE. Estes problemas devem ser levados em consideração na hora de montagem do sistema de aquisição de dados e também do \textit{software}, além de levantados nos processos de engenharia de \textit{software} quando se comenta sobre os requisitos do sistema (como tratamento de dados). Os problemas encontrados são:
+
+\begin{itemize}
+	\item  Interferência eletro-magnética: Os picos de tensão produzidos pela centelha da vela podem interferir no microcontrolador se o mesmo não for bem isolado; 
+	\item Temperatura do \textit{cockpit}: Depende muito da hora de realização do enduro e local, mas em regiões mais quentes como no nordeste e em horários como 12 e 14 horas, a temperatura interna do \textit{cockpit} pode ficar muito elevada e esta pode comprometer qualquer circuitaria que seja sensivel a calor e não esteja protegida; 
+	\item Vibração: Pela natureza de uma prova \textit{off-road}, existe muita vibração. Este problema pode acarretar em mal contato entre circuitos e placas;
+	\item Lama
+\end{itemize}
+
 
 Foram então levantados junto com o grupo Velociraptor os componentes que seriam monitorados. Os seguintes itens foram levantados: 
 \begin{itemize}
