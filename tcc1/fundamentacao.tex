@@ -1,9 +1,9 @@
 \chapter{Fundamentação Teórica}
 	\label{ch:fundamentacao}
-Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente sera explicado como funciona a organização Baja SAE e as provas a quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também é descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho. Por ultimo algumas informações sobre os microprocessadores estudados para servir como base do \textit{SCOB} vão ser discutidas. \textbf{ATENÇÃO: VERICAR OUTRAS POSSIVEIS SEÇÕES!}
+Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente sera explicado como funciona a organização Baja SAE e as provas a quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho alem de informações sobre os microprocessadores estudados para servir como base do \textit{SCOB} vão ser discutidas. Por último é feito uma análise de práticas de engenharia de \textit{software} que podem ajudar na construção do sistema que será proposto.
 
 \section{Baja SAE}
-A categoria Baja, organizado pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizado, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros a serem montados devem, por regulamento, \cite{regulamentobajasae} serem feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou kevlar \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também segundo o regulamento o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
+A categoria Baja, organizado pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizada, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros a serem montados devem, por regulamento, \cite{regulamentobajasae} serem feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou kevlar \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também segundo o regulamento o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
 
 As provas realizadas pelos veículos em um torneio , segundo \cite{bajasae} são:
 \begin{itemize}
@@ -21,20 +21,84 @@ Além destas provas a equipe também deve realizar uma apresentação com o proj
 
 \section{Sensores}
 \label{sec:sensores}
+Os sensores, junto com atuadores, são os métodos em que circuitos elétricos conseguem se comunicar com o mundo físico realizando algumas tarefas como fazer uma medida de alguma grandeza. Existem diversos tipos de sensores e tipos de variações específicas para cada área de uso, sensores de posição como os potenciômetros, sensores de velocidade angular como tacômetros com rotores dentados, sensores de proximidade com uso de sensores óticos e assim por diante \cite{kilian2001modern}. 
+
 Os sensores presentes em um veículo se dividem em duas categorias \cite{vehicleDataAcquisition2014} - aqueles que são feitos para o conforto do passageiro e aqueles feitos para garantir o funcionamento devido da parte dinâmica do veículo. O primeiro é importante para a lista de opcionais do carro consequentemente agradar ao consumidor comum. O segundo é critico ao engenheiro em alto nível, sem impacto imediato para o publico em geral.
 
-Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de \textit{motorsport} em tempo real é dado por \cite{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, o autor continua e comenta que quando o motor esta numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor bem calibrado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
+Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de automobilismo em tempo real é dado por \citeonline{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, o autor continua e comenta que quando o motor esta numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor ajustado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
+
+O projeto do veículo \textit{off-road} do grupo Velociraptor já conta atualmente com alguns sensores. A Figura \ref{fig:sensoresBaja} mostra o esquema do sistema elétrico usado atualmente no veículo. Os espaços em azul são sensores utilizados na competição, os espaços em vermelho são sensores usados para testes. 
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Diagrama do sistema elétrico usados atualmente no baja.}
+		\includegraphics[scale=0.35]{sensoresBaja} 
+		\caption*{Fonte: Autor.}
+		\label{fig:sensoresBaja}
+\end{figure} 
+
+As subseções a seguir explicam o funcionamento destes sensores.
 
 \subsection{Frequência de rotação do motor}
 
+A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que esta conectado a uma transmissão. Esta transmissão esta conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que o RPM trata neste meio.
+
+Para fazer aquisição desta grandeza, é utilizado uma técnica que envolve a vela. A vela, que pode ser vista na Figura \ref{fig:vela}, está presente em todos os carros movidos a motores de combustão, sua função é causar a centelha que começa o processo de explosão do combustível misturado com ar na câmara interna do motor.       
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Vela automotiva.}
+		\includegraphics[scale=0.15]{velaAutomotiva} 
+		\caption*{Fonte: Google Imagens.}
+		\label{fig:vela}
+\end{figure} 
+
+A vela produz uma faísca a cada ciclo de explosão da gasolina ...
+
 \subsection{Velocidade do veículo}
+
+A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda com frequência proporcional a velocidade do veículo \cite{MTEsensorVelocidade}. Este sensor é utilizado em carros da marca GM.  
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Sensor de velocidade MTE 73020.}
+		\includegraphics[scale=0.25]{sensorVelocidade} 
+		\caption*{Fonte: MTE-THOMSON.}
+		\label{fig:sensorVelocidade}
+\end{figure} 
+
+No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio resultado na fórmula matemática a seguir:
+
+FORMULA MATEMATICA
+
+
 
 \subsection{Nível do combustível}
 \label{subsec:combustivel}
 
+O combustível é utilizado para causar a explosão controlada dentro do motor de combustão. Medir a quantidade ainda disponível no tanque de gasolina dele é essencial para que possam ser tomadas decisões como manter o veículo na pista ou chamar o veículo para os boxes. A técnica mais comum utilizada para tirar esta grandeza é a boia, como pode ser visto em alguns trabalhos analisados (\cite{Nunes2016} e \cite{projetoMiniBaja2006}) mas esta técnica não pode mais ser aplicada nas competições devido a novas regras de competição que não permitem uso de fios dentro de motores ou tanques de combustível \cite{regulamentobajasae}. 
+
+Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de medida da grandeza. Esta técnica tem ...
+
 \subsection{Temperatura do câmbio CVT}
 
+O câmbio é 
+
 \subsection{Deslocamento do amortecedor}
+
+O amortecedor, que está contido no conjunto da suspensão, tem o papel de controlar o carro de forma a manter as rodas do veículo em constante contato com o solo, trazendo melhor desempenho para o mesmo. Este sensor de deslocamento de amortecedor é utilizado em bancada para testes com o mesmo. Para fazer os teste foi criado um instrumento semelhante a um amortecedor em altura, que fica acoplado ao lado do amortecedor e é fixado ao mesmo. Quando o amortecedor sofre tensão o esforço também é transmitido para o instrumento e nele é realizada a aquisição da grandeza. Estes dados adquiridos ajudam na tomada de decisão da configuração da suspensão, escolhendo entre uma suspensão mais rígida ou mais suave dependendo do terreno, calibragem dos pneus, etc...     
+
+É utilizado um sensor GP2Y0A21YK0F da SHARP como pode ser visto na Figura \ref{fig:sensorAmortecedor} para fazer a aquisição do deslocamento do amortecedor. Este sensor 
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Sensor de deslocamento do amortecedor SHARP GP2Y0A21YK0F.}
+		\includegraphics[scale=0.15]{sensorAmortecedor} 
+		\caption*{Fonte: SHARP.}
+		\label{fig:sensorAmortecedor}
+\end{figure} 
+
 
 \section{Microcontroladores}
 \label{sec:microcontroladores}
