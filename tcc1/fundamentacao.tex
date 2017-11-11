@@ -21,7 +21,7 @@ Além destas provas a equipe também deve realizar uma apresentação com o proj
 
 \section{Sensores}
 \label{sec:sensores}
-Os sensores, junto com atuadores, são os métodos em que circuitos elétricos conseguem se comunicar com o mundo físico realizando algumas tarefas como fazer uma medida de alguma grandeza. Existem diversos tipos de sensores e tipos de variações específicas para cada área de uso, sensores de posição como os potenciômetros, sensores de velocidade angular como tacômetros com rotores dentados, sensores de proximidade com uso de sensores óticos e assim por diante \cite{kilian2001modern}. 
+Os sensores, junto com atuadores, são os métodos em que circuitos elétricos conseguem se comunicar com o mundo físico realizando algumas tarefas como fazer uma medida de alguma grandeza. Em \citeonline{Fraden2016} o sensor é definido como "um dispositivo que recebe um estimulo e responde com um sinal elétrico". Existem diversos tipos de sensores e tipos de variações específicas para cada área de uso, sensores de posição como os potenciômetros, sensores de velocidade angular como tacômetros com rotores dentados, sensores de proximidade com uso de sensores óticos e assim por diante \cite{kilian2001modern}. 
 
 Os sensores presentes em um veículo se dividem em duas categorias \cite{vehicleDataAcquisition2014} - aqueles que são feitos para o conforto do passageiro e aqueles feitos para garantir o funcionamento devido da parte dinâmica do veículo. O primeiro é importante para a lista de opcionais do carro consequentemente agradar ao consumidor comum. O segundo é critico ao engenheiro em alto nível, sem impacto imediato para o publico em geral.
 
@@ -39,6 +39,12 @@ O projeto do veículo \textit{off-road} do grupo Velociraptor já conta atualmen
 
 As subseções a seguir explicam o funcionamento destes sensores.
 
+\subsection{Temperatura do motor}
+
+O motor deve operar em uma temperatura ideal abaixo de 110$^\circ$C para desempenhar bem o seu papel. Se sobreaquecidas, as peças do conjunto começam a operar de forma incorreta e isto pode ocasionar rompimento da junta de vedação da galeria de óleo, diminuição da espessura do óleo e em casos de exposição prolongada a sobreaquecimento, travamento do pistão dentro da câmara do motor. Para evitar casos como estes citados acima é importante ter a informação sobre a temperatura do motor, com a informação o piloto pode forçar menos o motor na prova para manter a temperatura estável ou o carro pode ser parado para uma manutenção de emergência.
+
+Para realizar a aquisição desta grandeza é utilizado um sensor termistor de coeficiente negativo de temperatura. 
+
 \subsection{Frequência de rotação do motor}
 
 A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que esta conectado a uma transmissão. Esta transmissão esta conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que o RPM trata neste meio.
@@ -53,11 +59,11 @@ Para fazer aquisição desta grandeza, é utilizado uma técnica que envolve a v
 		\label{fig:vela}
 \end{figure} 
 
-A vela produz uma faísca a cada ciclo de explosão da gasolina ...
+A vela produz uma centelha a cada ciclo de explosão da gasolina e esta centelha é produzida a partir de uma carga de energia de 15V. A carga de energia é capturada por uma bobina em volta do fio elétrico da vela e conectada a uma entrada digital do microprocessador. Quando ocorrer a centelha é executada uma interrupção no programa do microprocessador e incrementado um valor em uma variável reservada para o RPM. Esta variável ainda deve ser tratada antes de ser passada para o painel pois a centelha da vela é ativada uma vez a cada ciclo do motor, porém dentro de um ciclo completo (admissão, compressão, explosão e exaustão) é realizado dois giros do virabrequim, ou seja, duas RPM. Depois de ter o valor multiplicado por dois, o valor é demostrado no painel. 
 
 \subsection{Velocidade do veículo}
 
-A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda com frequência proporcional a velocidade do veículo \cite{MTEsensorVelocidade}. Este sensor é utilizado em carros da marca GM.  
+A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda quadrática com frequência proporcional a velocidade do veículo \cite{MTEsensorVelocidade} e que deve ser tratada de acordo com a sua aplicação. Este sensor é utilizado em carros da marca GM.  
 
 \begin{figure}[!htb]
 	\centering
@@ -67,22 +73,52 @@ A velocidade do veículo é a grandeza que indica a quão rápido um veículo se
 		\label{fig:sensorVelocidade}
 \end{figure} 
 
-No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio resultado na fórmula matemática a seguir:
+No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo, como pode ser visto na Figura \ref{fig:sensorVelocidadeEx}. Toda vez que um dente do freio passa próximo ao sensor o mesmo emite um sinal quadrático que está conectado ao microprocessador no SCOB. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio, resultando na fórmula matemática a seguir:
 
-FORMULA MATEMATICA
+\begin{figure}[!htb]
+	\centering
+		\caption{Sensor de velocidade conectado próximo ao freio traseiro.}
+		\includegraphics[scale=0.5]{sensorVelocidadeEx} 
+		\caption*{Fonte: UDESC Baja Velociraptor.}
+		\label{fig:sensorVelocidadeEx}
+\end{figure} 
 
+	$$V = \frac{S_{vel}}{N_{freio}} \times 2 \pi r  \times \frac{3.6km}{h}$$  
 
+Aonde $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de vezes que o sensor produziu um sinal quadrático, $N_{freio}$ é a quantidade de dentes presente no freio customizado do baja Velociraptor, $2 \pi r$ é fórmula da área da roda e $\frac{3.6km}{h}$ transforma o resultado de metros por segundo para quilômetros por hora.
 
 \subsection{Nível do combustível}
 \label{subsec:combustivel}
 
 O combustível é utilizado para causar a explosão controlada dentro do motor de combustão. Medir a quantidade ainda disponível no tanque de gasolina dele é essencial para que possam ser tomadas decisões como manter o veículo na pista ou chamar o veículo para os boxes. A técnica mais comum utilizada para tirar esta grandeza é a boia, como pode ser visto em alguns trabalhos analisados (\cite{Nunes2016} e \cite{projetoMiniBaja2006}) mas esta técnica não pode mais ser aplicada nas competições devido a novas regras de competição que não permitem uso de fios dentro de motores ou tanques de combustível \cite{regulamentobajasae}. 
 
-Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de medida da grandeza. Esta técnica tem ...
+Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de medida da grandeza. Esta técnica consistem em utilizar uma boia dentro do tanque de gasolina com um imã e 5 sensores capacitivos fixados pelo lado  
 
 \subsection{Temperatura do câmbio CVT}
 
-O câmbio é 
+O motor a combustão de um veículo gera torque e potência, porém esta entrega é linear e pode ser ineficaz dependendo do terreno em que o veículo se encontra. Para contornar esta situação e ter o torque sempre desejado, é adicionada uma transmissão ao veículo. A transmissão converte a saída de torque e potência com o objetivo de manter o motor o mais próximo possível da hipérbole de tração ideal \cite{Naunheimer2011}. 
+
+O tipo de transmissão escolhida para o baja Velociraptor foi uma caixa de câmbio CVT (\textit{Continuosly Variable Transmission}). Para a equipe, a informação da temperatura da transmissão é importante para o projeto do veículo pois o câmbio CVT possui componentes sensíveis como a correia utilizada no sistema. Na Figura \ref{fig:cvt} é possível visualizar um exemplo de câmbio CVT, a correia é o objeto pintado de vermelho e o rompimento da mesma por fatores como desgaste excessivo causaria falha total do sistema. 
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Câmbio CVT.}
+		\includegraphics[scale=0.2]{cvt} 
+		\caption*{Fonte: Google Imagens.}
+		\label{fig:cvt}
+\end{figure} 
+
+Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma voltagem correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvtfunc} exemplifica este processo descrito. A saída deste sensor é analógica e vai conectada a entrada analógica do microcontrolador.       
+
+\begin{figure}[h]
+
+\center
+\caption{Sensor MLX90614 e seu funcionamento.}
+\subfigure[Fonte:Google Imagens][Sensor MLX90614. Fonte:Google Imagens]{\includegraphics[width=5cm]{sensorCvt}\label{fig:sensorCvtimg}}
+\qquad
+\subfigure[Fonte:\cite{Fraden2016}][Exemplo do funcionamento. Fonte:\cite{Fraden2016}]{\includegraphics[width=5cm]{sensorCvtfunc}\label{fig:sensorCvtfunc}}
+\label{fig:sensorCvt}
+\end{figure}
 
 \subsection{Deslocamento do amortecedor}
 
@@ -102,6 +138,27 @@ O amortecedor, que está contido no conjunto da suspensão, tem o papel de contr
 
 \section{Microcontroladores}
 \label{sec:microcontroladores}
+
+Os microcontroladores são os dispositivos de maior importância dentro de um sistema embarcado, sendo considerados o coração de um projeto que envolva soluções remotas \cite{aSurveyTo2010}. O microcontrolador possui várias funções integradas dentro de um único chip e com baixo consumo de energia. Dentro dele é possível encontrar uma unidade de processamento, uma unidade de memória para usabilidade geral, pinagem para operações gerais de entrada e saída e entradas/saídas para protocolos seriais como \textit{I$^2$C}. A Figura \ref{fig:arquiteturaAtmega} é um exemplo a arquitetura de um microcontrolador usado em diversas placas de desenvolvimento, o ATmega328/ATmega328p. Ele utiliza arquitetura Harvard, ou seja, o acesso a memória de dados é separado da memória de programa.        
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Diagrama de blocos do microcontrolador ATmega328/ATmega328p.}
+		\includegraphics[scale=0.7]{arquiteturaAtmega} 
+		\caption*{Fonte: Atmel.}
+		\label{fig:arquiteturaAtmega}
+\end{figure} 
+
+Em \citeonline{aSurveyTo2010} é citado alguns fatores que são levados em conta na escolha do microcontrolador para o projeto discutido no artigo, porém tais critérios podem ser revistos e redimensionados para a aplicação no baja Velociraptor. Os critérios de maior relevância são:
+
+\begin{itemize}
+	\item Baixo consumo de energia;
+	\item Quantidade suficiente de entradas/saídas para periféricos; e
+	\item Programável em C.
+\end{itemize}   
+
+Além destes critérios citados, o \textbf{custo} também é um fator que deve ser levado em conta para a escolha do microcontrolador. Estes critérios levam a construção da Tabela onde podem ser vistas  
 
 % ESTA PARTE TEM QUE SER ADAPTADA A ESTA SEÇÃO, UTILIZAR \cite{designAndImplementation2015}
 A utilização de uma \textit{PC Board} é uma ideia que pode ser incluída no projeto da equipe da UDESC de baja SAE. Porém os contras desta possibilidade devem ser bem avaliados. Um outro problema, além do custo já citado, é o tamanho. Um \textit{Raspberry Pi 3 Model B} tem dimensões 85mm x 56mm x 17mm, já um \textit{Arduino Nano V3.0} possui dimensões 45mm x 18mm. Levando em consideração o fato de que ainda é produzido um \textit{shield} sobre o equipamento e ele é introduzido em uma caixa que fica entre o volante e a coluna frontal do veículo
