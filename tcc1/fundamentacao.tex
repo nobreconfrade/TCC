@@ -156,7 +156,7 @@ O amortecedor, que está contido no conjunto da suspensão, tem o papel de contr
 \section{Microcontroladores}
 \label{sec:microcontroladores}
 
-Os microcontroladores são os dispositivos de maior importância dentro de um sistema embarcado, sendo considerados o coração de um projeto que envolva soluções remotas \cite{aSurveyTo2010}. O microcontrolador possui várias funções integradas dentro de um único chip e com baixo consumo de energia. Dentro dele é possível encontrar uma unidade de processamento, uma unidade de memória para usabilidade geral, pinagem para operações gerais de entrada e saída e entradas/saídas para protocolos seriais como \textit{I$^2$C}. A Figura \ref{fig:arquiteturaAtmega} é um exemplo a arquitetura de um microcontrolador usado em diversas placas de desenvolvimento, o ATmega328/ATmega328p. Ele utiliza arquitetura Harvard, ou seja, o acesso a memória de dados é separado da memória de programa.        
+Os microcontroladores são os dispositivos de maior importância dentro de um sistema embarcado, sendo considerados o coração de um projeto que envolva soluções remotas \cite{aSurveyTo2010}. O microcontrolador possui várias funções integradas dentro de um único chip e com baixo consumo de energia. Dentro dele é possível encontrar uma unidade de processamento, uma quantidade fixa de memória RAM, memória ROM, pinagem para operações gerais de entrada e saída, entradas/saídas para protocolos seriais como \textit{I$^2$C} além de um \textit{timer} \cite{mazidi2008pic}. A Figura \ref{fig:arquiteturaAtmega} é um exemplo a arquitetura de um microcontrolador usado em diversas placas de desenvolvimento, o ATmega328/ATmega328p. Ele utiliza arquitetura Harvard, ou seja, o acesso a memória de dados é separado da memória de programa.        
 
 
 \begin{figure}[!htb]
@@ -167,20 +167,95 @@ Os microcontroladores são os dispositivos de maior importância dentro de um si
 		\label{fig:arquiteturaAtmega}
 \end{figure} 
 
-Em \citeonline{aSurveyTo2010} é citado alguns fatores que são levados em conta na escolha do microcontrolador para o projeto discutido no artigo, porém tais critérios podem ser revistos e redimensionados para a aplicação no baja Velociraptor. Os critérios de maior relevância são:
+Em \citeonline{aSurveyTo2010} e em \citeonline{mazidi2008pic} são citados alguns fatores que são levados em conta na escolha do microcontrolador, porém tais critérios podem ser revistos e redimensionados para a aplicação no baja Velociraptor. Os critérios de maior relevância então são:
 
 \begin{itemize}
 	\item Baixo consumo de energia;
-	\item Quantidade suficiente de entradas/saídas para periféricos; e
-	\item Programável em C.
+	\item Quantidade de RAM e ROM suficiente para a rotina desejada;
+	\item Facilidade de desenvolvimento;
+	\item Quantidade suficiente de entradas/saídas para periféricos; 
+	\item Programável em C; e
+	\item Custo.
 \end{itemize}   
 
-Além destes critérios citados, o \textbf{custo} também é um fator que deve ser levado em conta para a escolha do microcontrolador. Estes critérios levam a construção da Tabela onde podem ser vistas  
+A equipe Velociraptor atualmente já trabalha com um microcontrolador da Atmel, o ATmega328 em uma placa de desenvolvimento Arduino Nano V3. Este microcontrolador supre todos os critérios citados acima para o cenário atual, com os sensores citados na seção \ref{sec:sensores}, porém com a criação de um novo \textit{software} para tratamento de dados e em conjunto com os objetivos futuros da equipe de atualizações nas tecnologia utilizadas, o uso deste microcontrolador deve ser revisado para ser mantido ou descartado. Outro fator discutido com a equipe é o uso de microcontroladores que são suportados por placas de desenvolvimento, revisadas na seção \ref{sec:placasdedesenvolvimento}. As placas de desenvolvimento facilitariam a criação do SCOB, e servem para o escopo deste projeto já que são placas desenvolvidas para um ambiente de prototipagem. 
 
-% ESTA PARTE TEM QUE SER ADAPTADA A ESTA SEÇÃO, UTILIZAR \cite{designAndImplementation2015}
-A utilização de uma \textit{PC Board} é uma ideia que pode ser incluída no projeto da equipe da UDESC de baja SAE. Porém os contras desta possibilidade devem ser bem avaliados. Um outro problema, além do custo já citado, é o tamanho. Um \textit{Raspberry Pi 3 Model B} tem dimensões 85mm x 56mm x 17mm, já um \textit{Arduino Nano V3.0} possui dimensões 45mm x 18mm. Levando em consideração o fato de que ainda é produzido um \textit{shield} sobre o equipamento e ele é introduzido em uma caixa que fica entre o volante e a coluna frontal do veículo
-%olha aqui https://www.filipeflop.com/produto/raspberry-pi-zero-w/
+a Tabela \ref{tab:microcontroladores} faz uma comparação entre microcontroladores encontrados em placas de desenvolvimento no mercado das marcas Intel\footnote{\href{https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/quark-c1000-datasheet.pdf}{Quark SE Microcontroller C1000 Datasheet}}, Atmel\footnote{\href{http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf}{ATmega16U4/ATmega32U4 Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-42735-8-bit-AVR-Microcontroller-ATmega328-328P_Datasheet.pdf}{ATmega328/P Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf}{Atmel ATmega640/V-1280/V-1281/V-2561/V Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-11057-32-bit-Cortex-M3-Microcontroller-SAM3X-SAM3A_Datasheet.pdf}{SAM3X / SAM3A Series Datasheet}} e NXP\footnote{\href{https://www.nxp.com/docs/en/data-sheet/KL25P80M48SF0.pdf}{NXP Kinetis KL25 Sub-Family Datasheet}} . 
+O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocidade de \textit{clock} 5.25 vezes maior que o microcontrolador com mais lento e 48 vezes mais memória. O microcontrolador da Intel possui uma boa quantidade de memoria RAM, porém sua pinagem é menor que do ATmega328, o microcontrolador de menor desempenho da família Atmel visto neste comparativo. 
+\begin{table}[!htb]
+	\centering
+	\caption{Comparação de microcontroladores }
+	\label{tab:microcontroladores}
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+		\rowcolor[HTML]{9B9B9B} 
+		\textbf{Modelo}  & \textbf{Fabricante} & \textbf{Clock} & \textbf{I/O Digital} & \textbf{I/O Analógica} & \textbf{RAM} \\ \hline
+		AT91SAM3X8E    & Atmel               & 84 MHz         & 54                   & 14                     & 96 KB SRAM   \\ \hline
+		ATmega2560     & Atmel               & 16 MHz          & 54                   & 16                     & 8 KB SRAM    \\ \hline
+		ATmega328     & Atmel               & 16 MHz         & 14                   & 8                      & 2 KB SRAM    \\ \hline
+		ATmega32u4     & Atmel               & 16 MHz          & 20                   & 12                     & 2.5 KB SRAM  \\ \hline
+		MKL25Z128VLK4  & NXP                 & 48 MHz          & 60                   & 6                      & 16 KB SRAM   \\ \hline
+		Quark SE C1000 & Intel               & 32 MHz         & 14                   & 6                      & 80 KB SRAM   \\ \hline
+		\end{tabular}
+	\caption*{Fonte: Autor.}
+\end{table}
 
+\subsection{Placas de desenvolvimento} 
+\label{sec:placasdedesenvolvimento}
+
+O mercado atual de sistemas embarcados oferece uma opção para melhor produtividade e facilidade de desenvolvimento, a custo da especificidade envolvida nos projetos. As placas de desenvolvimento são componentes criados para suportar um ambiente com uma unidade de processamento, geralmente um microcontrolador, um cristal gerador de \textit{clock} e uma entrada para interfaceamento com o computador (USB ou mini-USB), outros periféricos também podem ser encontrados de fábrica dependendo do modelo, como acelerômetros e giroscópios. 
+
+Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes, tamanhos, poder de processamento, poder de armazenamento e assim por diante. A Tabela \ref{tab:placasdedesenvolvimento} traz uma comparação entre várias placas de desenvolvimento que utilizam microcontroladores vistos na Tabela \ref{tab:microcontroladores}. A dimensão é dada em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}. A dimensão de altura das placas Arduino são estimativas, visto que oficialmente estes números não são divulgados. 
+
+\begin{table}[!htb]
+	\centering
+	\caption{Comparação entre placas de desenvolvimento}
+	\label{tab:placasdedesenvolvimento}
+	\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	\rowcolor[HTML]{9B9B9B} 
+	\textbf{Modelo}      & \textbf{Fabricante} & \textbf{Microcontrolador} & \textbf{Dimensões} & \textbf{Preço} \\ \hline
+	FRDM-KL25Z		   & NXP                 & MKL25Z128VLK4             & 80 x 53 x 6        & R\$169,90      \\ \hline
+	Genuino 101        & Intel               & Quark SE                  & 70 x 55 x 20       & R\$229,90      \\ \hline
+	Uno R3             & Arduino             & ATmega328                 & 68.6 x 53.4 x 25   & R\$44,90       \\ \hline
+	Nano V3            & Arduino             & ATmega328                 & 45 x 18 x 7.6      & R\$49,90       \\ \hline
+	Mega 2560 R3       & Arduino             & ATmega2560                & 102 × 54 x 25      & R\$74,90       \\ \hline
+	Due                & Arduino             & AT91SAM3X8E               & 101.52 x 53.3 x 25 & R\$139,90      \\ \hline
+	Leonardo R3        & Arduino             & ATmega32u4                & 68.6 x 53.3 x 25   & R\$59,90       \\ \hline
+	\end{tabular}
+	\caption*{Fonte: Autor.}
+\end{table}
+
+É possível tirar algumas análises desta tabela, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção de fábrica. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100, isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} da uma demonstração de como está estruturado o painel atualmente com um Arduino Nano V3. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Foto do painel dianteiro atual do baja Velociraptor.}
+		\includegraphics[scale=0.05]{paineldianteiro} 
+		\caption*{Fonte: Autor.}
+		\label{fig:paineldianteiro}
+\end{figure} 
+     
+
+Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} trás uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas na Tabela \ref{tab:placasdedesenvolvimento}. A Tabela \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}.
+
+\begin{table}[!htb]
+	\centering
+	\caption{Comparação entre \textit{Single Board Computer}}
+	\label{tab:singleboard}
+	\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\rowcolor[HTML]{9B9B9B} 
+		\textbf{Modelo} & \textbf{Fabricante} & \textbf{Processador}     & \textbf{Clock} & \textbf{I/O Digital} & \textbf{I/O Analógica} & \textbf{RAM}  & \textbf{Dimensões} & \textbf{Preço} \\ \hline
+		3 Model B     & Raspberry Pi        & BCM2837         & 1200 MHz       & 40                   & N/A                    & 1 GB LPDDR2   & 85 x 56 x 17       & R\$299,90      \\ \hline
+		Zero W        & Raspberry Pi        & BCM2835         & 1000 MHz       & 40                   & N/A                    & 512 MB LPDDR2 & 65 x 30 x 5        & R\$79,90       \\ \hline
+		Green         & BeagleBone          & AM3358 & 1000 MHz       & 65                   & 7                      & 512 MB DDR3   & 86 x 53 x 19       & R\$329,90      \\ \hline
+		Black Rev.C   & BeagleBone          & AM3358 & 1000 MHz       & 65                   & 7                      & 512 MB DDR3   & 86 x 53 x 19       & R\$399,90      \\ \hline
+	\end{tabular}}
+	\caption*{Fonte: Autor.}
+\end{table}
+
+Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\$250 e dificilmente serão escolhidos para o projeto, porém todas as placas comparadas, o modelo Zero W tem a proposta mais atraente. Com memória RAM de 512 MB, velocidade de \textit{clock} de 1000 MHz, dimensões 65 x 30 x 5 milímetros e preço R\$79,90 esta \textit{Single Board Computer} possui poder de processamento e memória acima dos modelos vistos na Tabela \ref{tab:placasdedesenvolvimento} por um preço abaixo da casa de R\$100. A utilização dessas placas ainda trazem vantagens como a possibilidade de rodar um sistema operacional dentro do veículo, o que pode ser explorado para melhor processamento de dados dentro do SCOB, utilização de linguagens interpretadas e utilização de sistemas gerenciadores de bancos de dados para adição de uma camada extra de confiabilidade nos dados entregues pelo sistema. A desvantagem da utilização deste sistema é o custo, que aumenta uma margem pequena (cerca de 1.6 vezes o valor atual da placa de desenvolvimento), o aumento da complexidade do sistema com a adição de um sistema operacional dentro do veículo, o aumento das dimensões da placa de desenvolvimento (de 45 x 18 x 7.6 para 65 x 30 x 5) e a falta de entradas analógicas no modelo Zero W sendo assim necessário o uso de módulos ADC externos. 
 
 \section{Software}
 \label{sec:software}
