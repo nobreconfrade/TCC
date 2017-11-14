@@ -260,6 +260,84 @@ Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\
 \section{Software}
 \label{sec:software}
 
+O \textit{software} é parte essencial deste trabalho. Todas as grandezas adquiridos pelos sensores apresentados na seção \ref{sec:sensores} e concentrados nos microcontroladores revisados na seção \ref{sec:microcontroladores} devem ser submetidos a um \textit{software} para transformação destes dados em informações. As seções a seguir devem revisar qual a tarefa que cada sub sistema deve realizar para alcançar os objetivos propostos na seção \ref{sec:objetivos}.  
+
+\subsection{Aquisição de dados}
+\label{sec:aquisicaodedados}
+
+O \textit{software} de aquisição de dados é a primeira interação dos dados vindos dos sensores com algum tipo de tratamento. Este subsistema não é o foco deste trabalho, porém ele deve ser revisado pois caso o \textit{software} principal traga alguma mudança substancial na forma de tratamento dos dados, os subsistemas de aquisição dentro dos microcontroladores deve ser atualizado para satisfazer quaisquer novos requisitos.
+
+Este subsistema possui é produzido por dois motivos: ele deve realizar a comunicação entre múltiplos microcontroladores em caso de uso de arquitetura distribuída, realizar qualquer calculo inicial para demonstração de informações no painel e ele deve preparar os dados para passagem para o subsistema de tratamento de dados \cite{racecarInstrumentationFor2012}\cite{projetoMiniBaja2006}\cite{designAndImplementation2015}\cite{Dias2010}\cite{Nunes2016}. A Figura \ref{fig:aquisicaodiagrama} demonstra como este subsistema funciona, os sensores capturam as grandezas desejadas e enviam os dados para o SCOB via chicote elétrico. As saídas dos sensores são conectadas nas entradas digitais ou analógicas do microcontrolador. O \textit{software} atual é feito em C e utiliza a biblioteca padrão do Arduino, visto o uso do Arduino Nano V3. Os dados são armazenados em variáveis e a cada ciclo do programa, os mesmos são salvos em um cartão SD. A forma atual de armazenamento dos dados no cartão é com criação de arquivos de texto sem formatação específica, o que dificulta a leitura de dados em outros nós. Contudo será estudado a aplicação de alguns formatos de arquivo como \textit{comma-separated values} e \textit{javascript object notation}, ou a utilização de um banco de dados de modelo relacional caso seja possível a utilização de \textit{Single Board Computers} como visto na Seção \ref{sec:placasdedesenvolvimento}.      
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Diagrama exemplificando funcionamento do sistema de aquisição.}
+		\includegraphics[scale=0.5]{aquisicaodiagrama} 
+		\caption*{Fonte: Autor.}
+		\label{fig:aquisicaodiagrama}
+\end{figure} 
+
+
+\subsection{Tratamento de dados}
+
+O sistema de tratamento de dados deve receber as informações fornecidas pelo meio de transporte de informação, neste caso o cartão SD, e com esses dados atualizar o ambiente do programa. 
+
+As equipes de automobilismo não divulgam muitas informações sobre seus sistemas de tratamento de dados, principalmente aqueles que envolvem telemetria. A exceção é quando estes sistemas utilizam de plataformas de empresas privadas para codificação destes \textit{software}, nestes casos os artigos comentam que estas plataformas são utilizadas para criação da GUI (Graphical User Interface) e geralmente usadas em conjunto com dispositivos de aquisição de dados também adquiridos de empresas privadas \cite{applicationOfData2010}\cite{vehicleDataAcquisition2014}\cite{designAndImplementation2015}\cite{developmentOfAn2016}. Contudo estas informações não são relevantes para o trabalho proposto na área de tratamento de dados, pois o sistema que deve ser desenvolvido para este fim deve ser projetado e executado junto a equipe Velociraptor com um requisito de baixo custo monetário. Um artigo revisado produziu sua própria plataforma de tratamento de dados em C e C++ \cite{racecarInstrumentationFor2012} e utiliza de alguns conceitos comentados na Seção \ref{sec:aquisicaodedados}, como utilização de \textit{comma-separated values} para formatação dos arquivos de dados. 
+
+Apesar da falta de literatura neste campo, este problema deve ser contornado com a utilização de métodos de engenharia de \textit{software}. Na Seção \ref{sec:engenhariadesoftware} são discutidos modelos que podem ajudar no levantamento de requisitos junto a equipe e impulsionar alguns atributos do sistema positivamente. 
+
+\subsection{Engenharia de software}
+\label{sec:engenhariadesoftware}
+
+A engenharia de \textit{software} é fundamentalmente o uso de processos para atingir uma meta com melhor qualidade, previsível e econômico. A engenharia de \textit{software} se baseia em princípios da engenharia para que suas atividades proposta, a fim de alcançar um objetivo final, sejam: interdependentes; com responsáveis (pessoas encarregadas de tarefas); e com entradas e saídas definidas \cite{wazlawick2013engenharia}. Os processos de engenharia de \textit{software} são feitos para o \textit{software} de forma genérica, sendo assim o cunho do projeto não deve ser um empecilho para a adoção das técnicas, processos e atividades. Em \citeonline{Pereira2012} é produzida uma tabela com um conjunto de atributos que é desejável em qualquer sistema de \textit{software}. A Figura \ref{fig:atributossoftware} mostra esta tabela, todos os atributos comentados na tabela são relevantes para o trabalho proposto e alcançar-los é um objetivo específico deste trabalho, o que impulsiona o uso de alguns conceitos de tais processos.        
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tabela com atributos desejáveis em um \textit{software}.}
+		\includegraphics[scale=0.3]{atributossoftware} 
+		\caption*{Fonte: \cite{Pereira2012}}
+		\label{fig:atributossoftware}
+\end{figure} 
+
+Existem dois tipos principais de abordagem quando se comenta em usar métodos de engenharia de \textit{software}, a primeira é a utilização de modelos de processos prescritivos. Os modelos prescritivos são aqueles que se baseiam em uma descrição, geralmente em requisitos levantados junto com o cliente, para criar processos a serem seguidos durante a execução do projeto \cite{wazlawick2013engenharia}. Alguns modelos que utilizam processos prescritivos são: o modelo cascata que introduz fases bem definidas e produção de documentação durante o processo; o modelo V que possui a execução de testes em diversos momentos em decorrer do projeto, o que enfatiza a importância dos mesmo para a construção do \textit{software}; o modelo espiral proposto por Boehm e com forte orientação a redução de riscos do projeto. 
+
+O modelo evolucionário parece possuir maior relevância com o projeto proposto neste trabalho de conclusão de curso, nele o projeto é baseado em uma técnica de prototipagem conhecida como \textit{cornerstone}. Nesta técnica são construídos protótipos no decorrer do processo, para avaliar os aspectos do sistema e entender melhor os requisitos e reduzir riscos. A Figura \ref{fig:evolucionario} produzida por \citeonline{wazlawick2013engenharia} demostra um diagrama de atividades UML simplificado para um prototipo genérico utilizando o modelo de prototipagem evolucionária. Uma desvantagem citada no texto é em relação a dificuldade de gerência do projeto, pois é difícil manter uma boa previsão de tempo para o mesmo devido a volatilidade das fases. Tal desvantagem pode ser superada com a ajuda de outro modelo sobre a prototipagem evolucionária, porém ao custo de aumento de complexidade.  
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Desenho exemplificando uma aplicação genérica do modelo evolucionário.}
+		\includegraphics[scale=0.7]{evolucionario} 
+		\caption*{Fonte: \cite{wazlawick2013engenharia}}
+		\label{fig:evolucionario}
+\end{figure} 
+
+O outro tipo de abordagem para os métodos da engenharia de \textit{software} é os métodos ágeis. Criados para suprir a necessidade da indústria de lançar produtos com mudança constante de requerimentos e imprescindibilidade de desenvolvimento rápido utilizando uma metodologia que melhora a produtividade geral dos seus usuários. Os métodos ágeis se apoiam em uma atitude de incremento sobre mudanças, sejam elas de requisitos, desenvolvimento ou entrega \cite{Sommerville2010}. Contudo a melhor forma de explicar a filosofia do método ágil é com o manifesto para desenvolvimento ágil de \textit{software} \cite{manifestoagil}, este comenta que os indivíduos e interações devem estar acima dos processos e ferramentas, \textit{software} em funcionamento sobre documentação abrangente, colaboração com o cliente e resposta constante a mudanças. 
+
+Existem vários modelos de métodos ágeis e o escolhido para ser focado neste trabalho foi o método \textit{SCRUM}. Esta escolha foi feita devido ao foco em produtividade do método e experiência prévia do autor no mesmo. 
+
+\subsubsection{SCRUM}
+
+O \textit{SCRUM} é um método que foca em trazer o cliente para perto da equipe de desenvolvimento e com isto fazer entregas assertivas em ciclos mensais ou semanais, dependendo do tamanho da equipe de desenvolvimento. Existem três perfis importantes no método, eles são os seguintes \cite{scrum}\cite{wazlawick2013engenharia}:
+
+\begin{itemize}
+	\item \textbf{SCRUM master:} É um facilitador na tomada de decisão em relação as mecânicas do \textit{SCRUM};
+	\item \textbf{Product owner:} O interessado no produto, quem irá utilizar os resultados, este papel tem maior peso na decisão de tarefas a serem feitas; e
+	\item \textbf{SCRUM team:} Esta é a equipe de desenvolvimento, entre 6 a 10 pessoas.
+\end{itemize} 
+
+O método trabalha em ciclos de desenvolvimento de semanas ou até mesmo um mês. Em cada ciclo, tarefas são levantadas da necessidade do cliente e colocadas no \textit{sprint} da equipe. As tarefas ficam em um \textit{product backlog} e são avaliadas em todo início de ciclo, se forem aprovadas elas são adicionadas ao \textit{sprint backlog} e trabalhadas durante o ciclo. A Figura \ref{fig:scrumquadro} trás um exemplo de um quadro genérico de \textit{SCRUM} produzido por \citeonline{wazlawick2013engenharia}. Os quadros de \textit{SCRUM} e algumas outras mecânicas do modelo podem ser alterados para se encaixar melhor com o cenário em que elas são empregadas \cite{Sommerville2010}, na Seção \ref{sec:objetivos} é proposto uma utilização de um quadro específico para o cenário do trabalho. 
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Exemplo de um quadro genérico de \textit{SCRUM}.}
+		\includegraphics[scale=0.7]{scrumquadro} 
+		\caption*{Fonte: \cite{wazlawick2013engenharia}}
+		\label{fig:scrumquadro}
+\end{figure} 
+
 % ------------------------------------------- PARTE DA ANDRESSA, DEIXAR PARA PEGAR ALGUM EXEMPLO DE ESCRITA
 \begin{comment}
 	\section{Síntese de Som}
