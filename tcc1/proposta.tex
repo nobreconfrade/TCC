@@ -16,15 +16,16 @@ Os conceitos revisados até este momento seram utilizados para a criação de um
 		Modular                    & \begin{tabular}[c]{@{}l@{}}Preparado para expansão e\\  atualização com novas \\tecnologias\end{tabular} \\ \hline
 		Armazenamento                   & \begin{tabular}[c]{@{}l@{}}Armazena os dados retirados \\ dos sensores para análises \\ futuras\end{tabular}                                                     \\ \hline
 	\end{tabular}
+		\caption*{Fonte: Autor.}
 \end{table}
 
 \section{Objetivos}
 \label{sec:objetivos}
-Os objetivos que devem nortear o trabalho a fim de sanar os problemas levantados podem ser subdivididos em objetivo principal, que é a meta final do trabalho, e objetivos secundários, que servem para medir a acertividade das medidas tomadas no curso do trabalho.
+Os objetivos que devem nortear o trabalho a fim de sanar os problemas levantados podem ser subdivididos em objetivo principal, que é a meta final do trabalho, e objetivos específicos, que servem para medir a acertividade das medidas tomadas no curso do trabalho.
 
 \subsection{Objetivo Geral}
 
-Produzir um sistema que forneça a equipe informações que irão ajudar aos setores do veículo (suspensão dianteira, suspensão traseira, freio, transmissão, eletrônica) em testes de bancada, bem como fornecer dados de uso geral da equipe como média do consumo de gasolina em prova para análises posteriores. 
+Produzir um sistema que forneça a equipe informações que irão ajudar aos setores de projeto do veículo como suspensão dianteira, suspensão traseira, freio, transmissão e eletrônica em testes de bancada, bem como fornecer dados de uso geral da equipe como média do consumo de gasolina em prova para análises posteriores. 
 
 O sistema é dividido em duas frentes: a parte de \textbf{aquisição} dos dados, feito junto ao SCOB com base nos dados recebidos via sensores revisados na seção \ref{sec:sensores}, esta parte já existe atualmente no baja Velociraptor, porém ela deve ser atualizada para acompanhar os avanços do novo \textit{software}; a parte de \textbf{tratamento} dos dados é o foco deste trabalho, nesta parte os dados serão armazenados de um cartão SD no SCOB e quando conectados a computadores de boxes, seus dados ali contidos são lidos por um \textit{software} que permite vizualição de gráficos e mostra de valores absolutos de maior importância. A Figura \ref{fig:geral} é um diagrama explicando o esquema geral do sistema, desde a aquisição dos dados pelos SCOBs e tratamento nos boxes com o \textit{software}. Os balões em azul indicam os sensores, os balões em laranja indicam \textit{hardware} e balões em verde indicam \textit{software}.         
 
