@@ -1,6 +1,6 @@
 \chapter{Fundamentação Teórica}
 	\label{ch:fundamentacao}
-Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente sera explicado como funciona a organização Baja SAE e as provas a quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microprocessadores estudados para servir como base do SCOB (sistema de controle interno dos sensores e atuadores do veículo) vão ser discutidas. Por último é feito uma análise de práticas de engenharia de \textit{software} que iram auxiliar na construção do sistema que será proposto.
+Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente será explicado como funciona a organização Baja SAE e as provas as quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microprocessadores estudados para servir como base do SCOB vão ser discutidas. Por último é realizada uma análise de práticas de engenharia de \textit{software} que irão auxiliar na construção do sistema que será proposto.
 
 \section{Baja SAE}
 A categoria Baja, organizado pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizada, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros a serem montados devem, por regulamento, \cite{regulamentobajasae} serem feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou kevlar \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também segundo o regulamento o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
@@ -41,30 +41,31 @@ As subseções a seguir explicam o funcionamento destes sensores.
 
 \subsection{Temperatura do motor}
 
-O motor deve operar em uma temperatura ideal abaixo de 110$^\circ$C para desempenhar bem o seu papel. Se sobreaquecidas, as peças do conjunto começam a operar de forma incorreta e isto pode ocasionar rompimento da junta de vedação da galeria de óleo, diminuição da espessura do óleo e em casos de exposição prolongada a sobreaquecimento, travamento do pistão dentro da câmara do motor. Para evitar casos como estes citados acima é importante ter a informação sobre a temperatura do motor, com a informação o piloto pode forçar menos o motor na prova para manter a temperatura estável ou o carro pode ser parado para uma manutenção de emergência.
+O motor deve operar em uma temperatura ideal abaixo de 110$^\circ$C para desempenhar bem o seu papel. Se sobreaquecidas, as peças do conjunto começam a operar de forma incorreta e isto pode ocasionar rompimento da junta de vedação da galeria de óleo, diminuição da viscosidade do óleo e em casos de exposição prolongada a sobreaquecimento, travamento do pistão dentro da câmara do motor. Para evitar casos como estes citados acima é importante ter a informação sobre a temperatura do motor, com a informação o piloto pode forçar menos o motor na prova para manter a temperatura estável ou o carro pode ser parado para uma manutenção de emergência.
 
-Para realizar a aquisição desta grandeza é utilizado um sensor termistor de coeficiente negativo de temperatura (conhecido como NTC). Este sensor é normalmente encontrado em lojas de eletrônica da forma demonstrada na Figura \ref{fig:sensorTemperaturantc}, porém, o utilizado no projeto baja Velociraptor é preparado para o ambiente automotivo com um corpo metálico para proteção contra ruídos e melhor posicionamento do sensor. A Figura \ref{fig:sensorTemperaturaautomotivo} é um desenho que demonstra qual é a composição deste sensor. O sensor vai acoplado ao cárter do motor, submerso em óleo. O sensor emite um sinal analógico proporcional a temperatura que ele é exposto, a resistência dele diminuí de acordo com o aumento de temperatura e aumenta com temperaturas mais baixas \cite{Fraden2016}.  
+Para realizar a aquisição desta grandeza é utilizado um sensor termistor de coeficiente negativo de temperatura (conhecido como NTC). Este sensor é facilmente encontrado em lojas de eletrônica, porém o utilizado no projeto baja Velociraptor é preparado para o ambiente automotivo com um corpo metálico para proteção contra ruídos e melhor posicionamento do sensor. A Figura \ref{fig:sensorTemperaturaautomotivo} é um desenho que demonstra qual é a composição deste sensor. O sensor vai acoplado ao cárter do motor, submerso em óleo. O sensor emite um sinal analógico proporcional a temperatura que ele é exposto, a resistência dele diminuí de acordo com o aumento de temperatura e aumenta com temperaturas mais baixas \cite{Fraden2016}.  
 
-\begin{figure}[ht]
-	\center
-	\caption{Sensor termistor NTC e um exemplo do sensor específico para automóveis.}
-	\subfigure[Fonte:Google Imagens][Sensor termistor NTC. Fonte:Google Imagens]{\includegraphics[width=5cm]{sensorTemperatura}\label{fig:sensorTemperaturantc}}
-	\qquad
-	\subfigure[Fonte:Franscisco Albero S.A.U.][Variante do termistor para aplicação automotiva. Fonte:Franscisco Albero S.A.U. modificado pelo autor]{\includegraphics[width=5cm]{sensorTemperaturaautomotivo}\label{fig:sensorTemperaturaautomotivo}}
-	\label{fig:sensorTemperatura}
-\end{figure}
+\begin{figure}[!htb]
+	\centering
+		\caption{Variante do termistor para aplicação automotiva.}
+		\includegraphics[scale=0.6]{sensorTemperaturaautomotivo} 
+		\caption*{Fonte:\cite{sensortempauto} modificado pelo autor.}
+		\label{fig:sensorTemperaturaautomotivo}
+\end{figure} 
+
+
 
 \subsection{Frequência de rotação do motor}
 
-A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que esta conectado a uma transmissão. Esta transmissão esta conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que o RPM trata neste meio.
+A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que está conectado a uma transmissão. Esta transmissão por sua vez está conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que o RPM trata neste meio.
 
-Para fazer aquisição desta grandeza, é utilizado uma técnica que envolve a vela. A vela, que pode ser vista na Figura \ref{fig:vela}, está presente em todos os carros movidos a motores de combustão, sua função é causar a centelha que começa o processo de explosão do combustível misturado com ar na câmara interna do motor.       
+Para fazer aquisição desta grandeza, é utilizado uma técnica que envolve a vela. A vela, que pode ser vista na Figura \ref{fig:vela}, está presente em todos os carros movidos a motores de combustão a gasolina, sua função é causar a centelha que começa o processo de explosão do combustível misturado com ar na câmara interna do motor.       
 
 \begin{figure}[!htb]
 	\centering
 		\caption{Vela automotiva.}
 		\includegraphics[scale=0.15]{velaAutomotiva} 
-		\caption*{Fonte: Google Imagens.}
+		\caption*{Fonte: \cite{vela}.}
 		\label{fig:vela}
 \end{figure} 
 
@@ -72,17 +73,17 @@ A vela produz uma centelha a cada ciclo de explosão da gasolina e esta centelha
 
 \subsection{Velocidade do veículo}
 
-A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda quadrática com frequência proporcional a velocidade do veículo \cite{MTEsensorVelocidade} e que deve ser tratada de acordo com a sua aplicação. Este sensor é utilizado em carros da marca GM.  
+A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda quadrada \cite{MTEsensorVelocidade} e que deve ser tratada de acordo com a sua aplicação. Este tipo de sensor é utilizado em carros da montadora General Motors.  
 
 \begin{figure}[!htb]
 	\centering
 		\caption{Sensor de velocidade MTE 73020.}
 		\includegraphics[scale=0.25]{sensorVelocidade} 
-		\caption*{Fonte: MTE-THOMSON.}
+		\caption*{Fonte: \cite{MTEsensorVelocidade}.}
 		\label{fig:sensorVelocidade}
 \end{figure} 
 
-No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo, como pode ser visto na Figura \ref{fig:sensorVelocidadeEx}. Toda vez que um dente do freio passa próximo ao sensor o mesmo emite um sinal quadrático que está conectado a entrada digital do microprocessador no SCOB. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio, resultando na fórmula matemática a seguir:
+No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo, como pode ser visto na Figura \ref{fig:sensorVelocidadeEx}. Toda vez que um dente do freio passa próximo ao sensor o mesmo emite um sinal que está conectado a entrada digital do microprocessador no SCOB. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio, resultando na fórmula matemática a seguir:
 
 \begin{figure}[!htb]
 	\centering
@@ -94,14 +95,14 @@ No baja Velociraptor o sensor esta acoplado ao eixo traseiro, próximo ao motor,
 
 	$$V = \frac{S_{vel}}{N_{freio}} \times 2 \pi r  \times \frac{3.6km}{h}$$  
 
-Aonde $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de vezes que o sensor produziu um sinal quadrático, $N_{freio}$ é a quantidade de dentes presente no freio customizado do baja Velociraptor, $2 \pi r$ é fórmula da área da roda e $\frac{3.6km}{h}$ transforma o resultado de metros por segundo para quilômetros por hora.
+Onde $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de vezes que o sensor produziu um sinal quadrático, $N_{freio}$ é a quantidade de dentes presente no freio customizado do baja Velociraptor, $2 \pi r$ é fórmula da área da roda e $\frac{3.6km}{h}$ transforma o resultado de metros por segundo para quilômetros por hora.
 
 \subsection{Nível do combustível}
 \label{subsec:combustivel}
 
 O combustível é utilizado para causar a explosão controlada dentro do motor de combustão. Medir a quantidade ainda disponível no tanque de gasolina dele é essencial para que possam ser tomadas decisões como manter o veículo na pista ou chamar o veículo para os boxes. A técnica mais comum utilizada para tirar esta grandeza é a boia, como pode ser visto em alguns trabalhos analisados (\cite{Nunes2016} e \cite{projetoMiniBaja2006}) mas esta técnica não pode mais ser aplicada nas competições devido a novas regras de competição que não permitem uso de fios dentro de motores ou tanques de combustível \cite{regulamentobajasae}. 
 
-Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de medida da grandeza. Esta técnica consistem em utilizar uma boia dentro do tanque de gasolina com um imã e 5 sensores de efeito Hall US1881 fixados pelo lado de fora do tanque. Os sensores de efeito Hall tem seu valor de saída alterado quando a boia presente dentro do tanque passa por ele, desta forma é possível medir a quantidade de gasolina dentro do tanque sem que a necessidade de fios na parte interna do mesmo. A sinal de saída desses sensores é digital, mas para melhor manutenção dos chicotes elétricos este sinal é convertido para um sinal analógico, no qual a frequência recebida pelo microcontrolador é proporcional a quantidade de gasolina presente no tanque. A Figura \ref{fig:sensorTanque} mostra como é montado o \textit{shield} com os sensores de efeito Hall enfileirados.  
+Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de medida da grandeza. Esta técnica consistem em utilizar uma boia dentro do tanque de gasolina com um imã e 5 sensores de efeito Hall US1881 fixados na parte externa do tanque. Os sensores de efeito Hall tem seu valor de saída alterado quando a boia presente dentro do tanque passa por eles, desta forma é possível medir a quantidade de gasolina dentro do tanque sem que exista a necessidade de fios na parte interna do mesmo. A sinal de saída desses sensores é digital, mas para melhor manutenção dos chicotes elétricos este sinal é convertido para um sinal analógico, no qual a frequência recebida pelo microcontrolador é proporcional a quantidade de gasolina presente no tanque. A Figura \ref{fig:sensorTanque} mostra como é montado o \textit{shield} com os sensores de efeito Hall enfileirados.  
 
 \begin{figure}[!htb]
 	\centering
@@ -122,16 +123,16 @@ O tipo de transmissão escolhida para o baja Velociraptor foi uma caixa de câmb
 	\centering
 		\caption{Câmbio CVT.}
 		\includegraphics[scale=0.2]{cvt} 
-		\caption*{Fonte: Google Imagens.}
+		\caption*{Fonte: \cite{cvt}.}
 		\label{fig:cvt}
 \end{figure} 
 
-Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma voltagem correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvtfunc} exemplifica este processo descrito. A saída deste sensor é analógica e vai conectada a entrada analógica do microcontrolador.       
+Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma tensão correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtfunc} exemplifica este processo descrito. A saída deste sensor é analógica e vai conectada a entrada analógica do microcontrolador.       
 
 \begin{figure}[!htb]
 	\center
 	\caption{Sensor MLX90614 e seu funcionamento.}
-	\subfigure[Fonte:Google Imagens][Sensor MLX90614. Fonte:Google Imagens]{\includegraphics[width=5cm]{sensorCvt}\label{fig:sensorCvtimg}}
+	\subfigure[Fonte:Google Imagens][Sensor MLX90614. Fonte:\cite{tempcvt}]{\includegraphics[width=3cm]{sensorCvt}\label{fig:sensorCvtimg}}
 	\qquad
 	\subfigure[Fonte:\cite{Fraden2016}][Exemplo do funcionamento. Fonte:\cite{Fraden2016}]{\includegraphics[width=5cm]{sensorCvtfunc}\label{fig:sensorCvtfunc}}
 	\label{fig:sensorCvt}
@@ -148,7 +149,7 @@ O amortecedor, que está contido no conjunto da suspensão, tem o papel de contr
 	\centering
 		\caption{Sensor de deslocamento do amortecedor SHARP GP2Y0A21YK0F.}
 		\includegraphics[scale=0.15]{sensorAmortecedor} 
-		\caption*{Fonte: SHARP.}
+		\caption*{Fonte: \cite{SHARP}.}
 		\label{fig:sensorAmortecedor}
 \end{figure} 
 
@@ -156,14 +157,14 @@ O amortecedor, que está contido no conjunto da suspensão, tem o papel de contr
 \section{Microcontroladores}
 \label{sec:microcontroladores}
 
-Os microcontroladores são os dispositivos de maior importância dentro de um sistema embarcado, sendo considerados o coração de um projeto que envolva soluções remotas \cite{aSurveyTo2010}. O microcontrolador possui várias funções integradas dentro de um único chip e com baixo consumo de energia. Dentro dele é possível encontrar uma unidade de processamento, uma quantidade fixa de memória RAM, memória ROM, pinagem para operações gerais de entrada e saída, entradas/saídas para protocolos seriais como \textit{I$^2$C} além de um \textit{timer} \cite{mazidi2008pic}. A Figura \ref{fig:arquiteturaAtmega} é um exemplo a arquitetura de um microcontrolador usado em diversas placas de desenvolvimento, o ATmega328/ATmega328p. Ele utiliza arquitetura Harvard, ou seja, o acesso a memória de dados é separado da memória de programa.        
+Os microcontroladores são os dispositivos de maior importância dentro de um sistema embarcado, sendo considerados o coração de um projeto que envolva soluções remotas \cite{aSurveyTo2010}. O microcontrolador possui várias funções integradas dentro de um único \textit{chip} e com baixo consumo de energia. Dentro dele é possível encontrar uma unidade de processamento, uma quantidade fixa de memória RAM, memória ROM, pinagem para operações gerais de entrada e saída, entradas/saídas para protocolos seriais como \textit{I$^2$C} além de um \textit{timer} \cite{mazidi2008pic}. A Figura \ref{fig:arquiteturaAtmega} é um exemplo a arquitetura de um microcontrolador usado em diversas placas de desenvolvimento, o ATmega328/ATmega328p. Ele utiliza arquitetura Harvard, ou seja, o acesso a memória de dados é separado da memória de programa.        
 
 
 \begin{figure}[!htb]
 	\centering
 		\caption{Diagrama de blocos do microcontrolador ATmega328/ATmega328p.}
 		\includegraphics[scale=0.7]{arquiteturaAtmega} 
-		\caption*{Fonte: Atmel.}
+		\caption*{Fonte: \cite{atmel}.}
 		\label{fig:arquiteturaAtmega}
 \end{figure} 
 
@@ -184,7 +185,7 @@ a Tabela \ref{tab:microcontroladores} faz uma comparação entre microcontrolado
 O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocidade de \textit{clock} 5.25 vezes maior que o microcontrolador com mais lento e 48 vezes mais memória. O microcontrolador da Intel possui uma boa quantidade de memoria RAM, porém sua pinagem é menor que do ATmega328, o microcontrolador de menor desempenho da família Atmel visto neste comparativo. 
 \begin{table}[!htb]
 	\centering
-	\caption{Comparação de microcontroladores }
+	\caption{Comparação de microcontroladores.}
 	\label{tab:microcontroladores}
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
@@ -205,7 +206,7 @@ O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocid
 
 O mercado atual de sistemas embarcados oferece uma opção para melhor produtividade e facilidade de desenvolvimento, a custo da especificidade envolvida nos projetos. As placas de desenvolvimento são componentes criados para suportar um ambiente com uma unidade de processamento, geralmente um microcontrolador, um cristal gerador de \textit{clock} e uma entrada para interfaceamento com o computador (USB ou mini-USB), outros periféricos também podem ser encontrados de fábrica dependendo do modelo, como acelerômetros e giroscópios. 
 
-Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes, tamanhos, poder de processamento, poder de armazenamento e assim por diante. A Tabela \ref{tab:placasdedesenvolvimento} traz uma comparação entre várias placas de desenvolvimento que utilizam microcontroladores vistos na Tabela \ref{tab:microcontroladores}. A dimensão é dada em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}. A dimensão de altura das placas Arduino são estimativas, visto que oficialmente estes números não são divulgados. 
+Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes, tamanhos, poder de processamento, poder de armazenamento e assim por diante. O Quadro \ref{tab:placasdedesenvolvimento} traz uma comparação entre várias placas de desenvolvimento que utilizam microcontroladores vistos no Quadro \ref{tab:microcontroladores}. A dimensão é dada em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}. A dimensão de altura das placas Arduino são estimativas, visto que oficialmente estes números não são divulgados. 
 
 \begin{table}[!htb]
 	\centering
@@ -226,7 +227,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 	\caption*{Fonte: Autor.}
 \end{table}
 
-É possível tirar algumas análises desta tabela, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100, isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} da uma demonstração de como está estruturado o painel atualmente com um Arduino Nano V3. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
+É possível tirar algumas análises deste quadro, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100, isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} da uma demonstração de como está estruturado o painel atualmente com um Arduino Nano V3. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
 
 \begin{figure}[!htb]
 	\centering
@@ -237,7 +238,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 \end{figure} 
      
 
-Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} trás uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas na Tabela \ref{tab:placasdedesenvolvimento}. A Tabela \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}.
+Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}.
 
 \begin{table}[!htb]
 	\centering
@@ -255,19 +256,19 @@ Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImple
 	\caption*{Fonte: Autor.}
 \end{table}
 
-Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\$250 e dificilmente serão escolhidos para o projeto, porém de todas as \textit{Single Board Computer} comparadas, o modelo Zero W tem a proposta mais atraente. Com memória RAM de 512 MB, velocidade de \textit{clock} de 1000 MHz, dimensões 65 x 30 x 5 milímetros e preço R\$79,90 esta \textit{Single Board Computer} possui poder de processamento e memória acima dos modelos vistos na Tabela \ref{tab:placasdedesenvolvimento} por um preço abaixo da casa de R\$100. A utilização dessas placas ainda trazem vantagens como a possibilidade de rodar um sistema operacional dentro do veículo, o que pode ser explorado para melhor processamento de dados dentro do SCOB, utilização de linguagens interpretadas e utilização de sistemas gerenciadores de bancos de dados para adição de uma camada extra de confiabilidade nos dados entregues pelo sistema. A desvantagem da utilização deste sistema é o custo, que aumenta uma margem pequena (cerca de 1.6 vezes o valor atual da placa de desenvolvimento), o aumento da complexidade do sistema com a adição de um sistema operacional dentro do veículo, o aumento das dimensões da placa de desenvolvimento (de 45 x 18 x 7.6 para 65 x 30 x 5) e a falta de entradas analógicas no modelo Zero W sendo assim necessário o uso de módulos ADC externos. 
+Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\$250 e dificilmente serão escolhidos para o projeto, porém de todas as \textit{Single Board Computer} comparadas, o modelo Zero W tem a proposta mais atraente. Com memória RAM de 512 MB, velocidade de \textit{clock} de 1000 MHz, dimensões 65 x 30 x 5 milímetros e preço R\$79,90 esta \textit{Single Board Computer} possui poder de processamento e memória acima dos modelos vistos no Quadro \ref{tab:placasdedesenvolvimento} por um preço abaixo da casa de R\$100. A utilização dessas placas ainda trazem vantagens como a possibilidade de rodar um sistema operacional dentro do veículo, o que pode ser explorado para melhor processamento de dados dentro do SCOB, utilização de linguagens interpretadas e utilização de sistemas gerenciadores de bancos de dados para adição de uma camada extra de confiabilidade nos dados entregues pelo sistema. A desvantagem da utilização deste sistema é o custo, que aumenta uma margem pequena (cerca de 1.6 vezes o valor atual da placa de desenvolvimento), o aumento da complexidade do sistema com a adição de um sistema operacional dentro do veículo, o aumento das dimensões da placa de desenvolvimento (de 45 x 18 x 7.6 para 65 x 30 x 5) e a falta de entradas analógicas no modelo Zero W sendo assim necessário o uso de módulos ADC externos. 
 
 \section{Software}
 \label{sec:software}
 
-O \textit{software} é parte essencial deste trabalho. Todas as grandezas adquiridos pelos sensores apresentados na seção \ref{sec:sensores} e concentrados nos microcontroladores revisados na seção \ref{sec:microcontroladores} devem ser submetidos a um \textit{software} para transformação destes dados em informações. As seções a seguir devem revisar qual a tarefa que cada sub sistema deve realizar para alcançar os objetivos propostos na seção \ref{sec:objetivos}.  
+O \textit{software} é parte essencial deste trabalho. Todas as grandezas adquiridas pelos sensores apresentados na seção \ref{sec:sensores} e concentrados nos microcontroladores revisados na seção \ref{sec:microcontroladores} devem ser submetidas a um \textit{software} para transformação destes dados em informações. As seções a seguir revisão qual tarefa cada sub sistema deve realizar para alcançar os objetivos propostos na seção \ref{sec:objetivos}.  
 
 \subsection{Aquisição de dados}
 \label{sec:aquisicaodedados}
 
 O \textit{software} de aquisição de dados é a primeira interação dos dados vindos dos sensores com algum tipo de tratamento. Este subsistema não é o foco deste trabalho, porém ele deve ser revisado pois caso o \textit{software} principal traga alguma mudança substancial na forma de tratamento dos dados, os subsistemas de aquisição dentro dos microcontroladores deve ser atualizado para satisfazer quaisquer novos requisitos.
 
-Este subsistema possui é produzido por dois motivos: ele deve realizar a comunicação entre múltiplos microcontroladores em caso de uso de arquitetura distribuída, realizar qualquer calculo inicial para demonstração de informações no painel e ele deve preparar os dados para passagem para o subsistema de tratamento de dados \cite{racecarInstrumentationFor2012}\cite{projetoMiniBaja2006}\cite{designAndImplementation2015}\cite{Dias2010}\cite{Nunes2016}. A Figura \ref{fig:aquisicaodiagrama} demonstra como este subsistema funciona, os sensores capturam as grandezas desejadas e enviam os dados para o SCOB via chicote elétrico. As saídas dos sensores são conectadas nas entradas digitais ou analógicas do microcontrolador. O \textit{software} atual é feito em C e utiliza a biblioteca padrão do Arduino, visto o uso do Arduino Nano V3. Os dados são armazenados em variáveis e a cada ciclo do programa, os mesmos são salvos em um cartão SD. A forma atual de armazenamento dos dados no cartão é com criação de arquivos de texto sem formatação específica, o que dificulta a leitura de dados em outros nós. Contudo será estudado a aplicação de alguns formatos de arquivo como \textit{comma-separated values} e \textit{javascript object notation}, ou a utilização de um banco de dados de modelo relacional caso seja possível a utilização de \textit{Single Board Computers} como visto na Seção \ref{sec:placasdedesenvolvimento}.      
+Este subsistema é produzido por dois motivos: ele deve realizar a comunicação entre múltiplos microcontroladores em caso de uso de arquitetura distribuída, realizar qualquer calculo inicial para demonstração de informações no painel e ele deve preparar os dados para passagem para o subsistema de tratamento de dados \cite{racecarInstrumentationFor2012}\cite{projetoMiniBaja2006}\cite{designAndImplementation2015}\cite{Dias2010}\cite{Nunes2016}. A Figura \ref{fig:aquisicaodiagrama} demonstra como este subsistema funciona, os sensores capturam as grandezas desejadas e enviam os dados para o SCOB via chicote elétrico. As saídas dos sensores são conectadas nas entradas digitais ou analógicas do microcontrolador. O \textit{software} atual é feito em C e utiliza a biblioteca padrão do Arduino, visto o uso do Arduino Nano V3. Os dados são armazenados em variáveis e a cada ciclo do programa, os mesmos são salvos em um cartão SD. A forma atual de armazenamento dos dados no cartão é com criação de arquivos de texto sem formatação específica, o que dificulta a leitura de dados em outros nós. Contudo será estudada a aplicação de alguns formatos de arquivo como \textit{comma-separated values} e \textit{javascript object notation}, ou a utilização de um banco de dados de modelo relacional caso seja possível a utilização de \textit{Single Board Computers} como visto na Seção \ref{sec:placasdedesenvolvimento}.      
 
 \begin{figure}[!htb]
 	\centering
@@ -289,20 +290,20 @@ Apesar da falta de literatura neste campo, este problema deve ser contornado com
 \subsection{Engenharia de software}
 \label{sec:engenhariadesoftware}
 
-A engenharia de \textit{software} é fundamentalmente o uso de processos para atingir uma meta com melhor qualidade, previsível e econômico. A engenharia de \textit{software} se baseia em princípios da engenharia para que suas atividades proposta, a fim de alcançar um objetivo final, sejam: interdependentes; com responsáveis (pessoas encarregadas de tarefas); e com entradas e saídas definidas \cite{wazlawick2013engenharia}. Os processos de engenharia de \textit{software} são feitos para o \textit{software} de forma genérica, sendo assim o cunho do projeto não deve ser um empecilho para a adoção das técnicas, processos e atividades. Em \citeonline{Pereira2012} é produzida uma tabela com um conjunto de atributos que é desejável em qualquer sistema de \textit{software}. A Figura \ref{fig:atributossoftware} mostra esta tabela, todos os atributos comentados na tabela são relevantes para o trabalho proposto e alcançar-los é um objetivo específico deste trabalho, o que impulsiona o uso de alguns conceitos de tais processos.        
+A engenharia de \textit{software} é fundamentalmente o uso de processos para atingir uma meta com melhor qualidade, previsibilidade e economia. A engenharia de \textit{software} se baseia em princípios da engenharia para que suas atividades proposta, a fim de alcançar um objetivo final, sejam eles: interdependentes; com responsáveis (pessoas encarregadas de tarefas); e com entradas e saídas definidas \cite{wazlawick2013engenharia}. Os processos de engenharia de \textit{software} são feitos para o \textit{software} de forma genérica, sendo assim o cunho do projeto não deve ser um empecilho para a adoção das técnicas, processos e atividades. Em \citeonline{Pereira2012} é produzido um quadro com um conjunto de atributos que é desejável em qualquer sistema de \textit{software}. No Quadro \ref{fig:atributossoftware} é possível verificar os atributos relevantes para o trabalho proposto e alcançar-los é um objetivo específico deste trabalho, o que impulsiona o uso de alguns conceitos de tais processos.        
 
 
-\begin{figure}[!htb]
+\begin{table}[!htb]
 	\centering
 		\caption{Tabela com atributos desejáveis em um \textit{software}.}
 		\includegraphics[scale=0.3]{atributossoftware} 
 		\caption*{Fonte: \cite{Pereira2012}}
 		\label{fig:atributossoftware}
-\end{figure} 
+\end{table} 
 
 Existem dois tipos principais de abordagem quando se comenta em usar métodos de engenharia de \textit{software}, a primeira é a utilização de modelos de processos prescritivos. Os modelos prescritivos são aqueles que se baseiam em uma descrição, geralmente em requisitos levantados junto com o cliente, para criar processos a serem seguidos durante a execução do projeto \cite{wazlawick2013engenharia}. Alguns modelos que utilizam processos prescritivos são: o modelo cascata que introduz fases bem definidas e produção de documentação durante o processo; o modelo V que possui a execução de testes em diversos momentos em decorrer do projeto, o que enfatiza a importância dos mesmo para a construção do \textit{software}; o modelo espiral proposto por Boehm e com forte orientação a redução de riscos do projeto. 
 
-O modelo evolucionário parece possuir maior relevância com o projeto proposto neste trabalho de conclusão de curso, nele o projeto é baseado em uma técnica de prototipagem conhecida como \textit{cornerstone}. Nesta técnica são construídos protótipos no decorrer do processo, para avaliar os aspectos do sistema e entender melhor os requisitos e reduzir riscos. A Figura \ref{fig:evolucionario} produzida por \citeonline{wazlawick2013engenharia} demostra um diagrama de atividades UML simplificado para um prototipo genérico utilizando o modelo de prototipagem evolucionária. Uma desvantagem citada no texto é em relação a dificuldade de gerência do projeto, pois é difícil manter uma boa previsão de tempo para o mesmo devido a volatilidade das fases. Tal desvantagem pode ser superada com a ajuda de outro modelo sobre a prototipagem evolucionária, porém ao custo de aumento de complexidade.  
+O modelo evolucionário parece possuir maior relevância para o projeto proposto neste trabalho de conclusão de curso, nele o projeto é baseado em uma técnica de prototipagem conhecida como \textit{cornerstone}. Nesta técnica são construídos protótipos no decorrer do processo, para avaliar os aspectos do sistema e entender melhor os requisitos e reduzir riscos. A Figura \ref{fig:evolucionario} produzida por \citeonline{wazlawick2013engenharia} demostra um diagrama de atividades UML simplificado para um prototipo genérico utilizando o modelo de prototipagem evolucionária. Uma desvantagem citada no texto é em relação a dificuldade de gerência do projeto, pois é difícil manter uma boa previsão de tempo para o mesmo devido a volatilidade das fases. Tal desvantagem pode ser superada com a ajuda de outro modelo sobre a prototipagem evolucionária, porém ao custo de aumento de complexidade.  
 
 
 \begin{figure}[!htb]
@@ -313,11 +314,12 @@ O modelo evolucionário parece possuir maior relevância com o projeto proposto 
 		\label{fig:evolucionario}
 \end{figure} 
 
-O outro tipo de abordagem para os métodos da engenharia de \textit{software} é os métodos ágeis. Criados para suprir a necessidade da indústria de lançar produtos com mudança constante de requerimentos e imprescindibilidade de desenvolvimento rápido utilizando uma metodologia que melhora a produtividade geral dos seus usuários. Os métodos ágeis se apoiam em uma atitude de incremento sobre mudanças, sejam elas de requisitos, desenvolvimento ou entrega \cite{Sommerville2010}. Contudo a melhor forma de explicar a filosofia do método ágil é com o manifesto para desenvolvimento ágil de \textit{software} \cite{manifestoagil}, este comenta que os indivíduos e interações devem estar acima dos processos e ferramentas, \textit{software} em funcionamento sobre documentação abrangente, colaboração com o cliente e resposta constante a mudanças. 
+O outro tipo de abordagem para os métodos da engenharia de \textit{software} são os métodos ágeis. Criados para suprir a necessidade da indústria de lançar produtos com mudança constante de requisitos e imprescindibilidade de desenvolvimento rápido utilizando uma metodologia que melhora a produtividade geral dos seus usuários. Os métodos ágeis se apoiam em uma atitude de incremento sobre mudanças, sejam elas de requisitos, desenvolvimento ou entrega \cite{Sommerville2010}. Contudo a melhor forma de explicar a filosofia do método ágil é com o manifesto para desenvolvimento ágil de \textit{software} \cite{manifestoagil}, este comenta que os indivíduos e interações devem estar acima dos processos e ferramentas, \textit{software} em funcionamento sobre documentação abrangente, colaboração com o cliente e resposta constante a mudanças. 
 
-Existem vários modelos de métodos ágeis e o escolhido para ser focado neste trabalho foi o método \textit{SCRUM}. Esta escolha foi feita devido ao foco em produtividade do método e experiência prévia do autor no mesmo. 
+Existem vários modelos de métodos ágeis e o escolhido para ser focado neste trabalho foi o método \textit{SCRUM}. Esta escolha foi feita devido ao foco em produtividade do método e experiência prévia do autor no uso do mesmo. 
 
 \subsubsection{SCRUM}
+\label{sec:scrum}
 
 O \textit{SCRUM} é um método que foca em trazer o cliente para perto da equipe de desenvolvimento e com isto fazer entregas assertivas em ciclos mensais ou semanais, dependendo do tamanho da equipe de desenvolvimento. Existem três perfis importantes no método, eles são os seguintes \cite{scrum}\cite{wazlawick2013engenharia}:
 

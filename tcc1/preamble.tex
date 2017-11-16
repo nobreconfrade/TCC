@@ -38,6 +38,7 @@
 %\usepackage{float}
 \usepackage{hyperref}
 %\usepackage[bottom]{footmisc}
+\usepackage{cleveref}
 
 %%resize table op1
 \usepackage{adjustbox}
@@ -95,13 +96,16 @@
 \setcounter{dbltopnumber}{9}
 \setcounter{secnumdepth}{3}
 
-%\addto\captionsportuges{
-%  \renewcommand{\tablename}
-%    {Quadro}}
+%\trivfloat{quadro}
 
-%\addto\captionsportuges{
-%  \renewcommand{\listtablename}
-%    {Lista de Quadros}}
+
+\addto\captionsportuges{
+  \renewcommand{\tablename}
+    {Quadro}}
+
+\addto\captionsportuges{
+  \renewcommand{\listtablename}
+    {Lista de Quadros}}
 
 \renewcommand{\lstlistingname}{C\'odigo}
 \def\listofsymbols{\input{symbols} \clearpage}

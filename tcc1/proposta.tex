@@ -1,7 +1,7 @@
 \chapter{\textit{Projeto/Proposta de Solução}}
 	\label{ch:proposta}
 
-Os conceitos revisados até este momento seram utilizados para a criação de uma proposta de solução computacional para a equipe baja Velociraptor. Revisando, a equipe tem como principal problema não conseguir obter informações que interessam a cada setor do veículo de maneira \textbf{intuitiva, simplificada, modular e com armazenamento.} Estes três conceitos são detalhados na Tabela \ref{tab:cenario} a seguir:     
+Os conceitos revisados até este momento serão utilizados para a criação de uma proposta de solução computacional para a equipe baja Velociraptor. Revisando, a equipe tem como principal problema não conseguir obter informações que interessam a cada setor de projeto do veículo de maneira \textbf{intuitiva, simplificada, modular e com armazenamento.} Estes três conceitos são detalhados no Quadro \ref{tab:cenario} a seguir:     
 
 \begin{table}[!htb]
 	\centering
@@ -21,30 +21,49 @@ Os conceitos revisados até este momento seram utilizados para a criação de um
 
 \section{Objetivos}
 \label{sec:objetivos}
-Os objetivos que devem nortear o trabalho a fim de sanar os problemas levantados podem ser subdivididos em objetivo principal, que é a meta final do trabalho, e objetivos específicos, que servem para medir a acertividade das medidas tomadas no curso do trabalho.
+Os objetivos que devem nortear o trabalho a fim de sanar os problemas levantados podem ser subdivididos em objetivo principal, que é a meta final do trabalho, e objetivos específicos, que servem para medir a assertividade das medidas tomadas no curso do trabalho.
 
 \subsection{Objetivo Geral}
 
 Produzir um sistema que forneça a equipe informações que irão ajudar aos setores de projeto do veículo como suspensão dianteira, suspensão traseira, freio, transmissão e eletrônica em testes de bancada, bem como fornecer dados de uso geral da equipe como média do consumo de gasolina em prova para análises posteriores. 
 
-O sistema é dividido em duas frentes: a parte de \textbf{aquisição} dos dados, feito junto ao SCOB com base nos dados recebidos via sensores revisados na seção \ref{sec:sensores}, esta parte já existe atualmente no baja Velociraptor, porém ela deve ser atualizada para acompanhar os avanços do novo \textit{software}; a parte de \textbf{tratamento} dos dados é o foco deste trabalho, nesta parte os dados serão armazenados de um cartão SD no SCOB e quando conectados a computadores de boxes, seus dados ali contidos são lidos por um \textit{software} que permite vizualição de gráficos e mostra de valores absolutos de maior importância. A Figura \ref{fig:geral} é um diagrama explicando o esquema geral do sistema, desde a aquisição dos dados pelos SCOBs e tratamento nos boxes com o \textit{software}. Os balões em azul indicam os sensores, os balões em laranja indicam \textit{hardware} e balões em verde indicam \textit{software}.         
+O sistema é dividido em duas frentes: a parte de \textbf{aquisição} dos dados, feito junto ao SCOB com base nos dados recebidos via sensores revisados na seção \ref{sec:sensores}, esta parte já existe atualmente no baja Velociraptor, porém ela deve ser atualizada para acompanhar os avanços do novo \textit{software}; a parte de \textbf{tratamento} dos dados é o foco deste trabalho, nesta parte os dados serão armazenados de um cartão SD no SCOB e quando conectados a computadores de boxes, seus dados ali contidos são lidos por um \textit{software} que permite visualização de gráficos e mostra de valores absolutos de maior importância. A Figura \ref{fig:esquemageral} possui dois diagramas, o diagrama da Figura \ref{fig:esquemageral}\subref{fig:geralatual} traz um esquema geral que atualmente é utilizado pelo Velociraptor no seu projeto, já a Figura \ref{fig:esquemageral}\subref{fig:geralproposto} traz um esquema geral proposto para este trabalho de conclusão de curso, desde a aquisição dos dados pelos SCOBs até o tratamento dos dados nos boxes com o \textit{software}. Em ambas as figuras os balões em azul indicam os sensores, os balões em laranja indicam \textit{hardware} de controle e balões em verde indicam \textit{software}, os balões com texto em negrito indicam modificação/criação de um sistema.         
+
+%\begin{figure}[!htb]
+%	\centering
+%		\caption{Diagrama com o esquema geral proposto do sistema.}
+%		\includegraphics[scale=0.3]{geral.png} 
+%		\caption*{Fonte: Autor.}
+%		\label{fig:geral}
+%\end{figure} 
 
 \begin{figure}[!htb]
-	\centering
-		\caption{Diagrama com o esquema geral do sistema.}
-		\includegraphics[scale=0.3]{geral.png} 
-		\caption*{Fonte: Autor.}
-		\label{fig:geral}
-\end{figure} 
+	\center
+	\caption{Diagrama com o esquema geral do sistema atual e o esquema geral do sistema proposto.}
+	\subfigure[Fonte:Autor][Esquema atual. Fonte:Autor]{\includegraphics[scale=0.3]{geralatual}\label{fig:geralatual}}
+	\qquad
+	\subfigure[Fonte:Autor][Esquema proposto. Fonte:Autor]{\includegraphics[scale=0.3]{geralproposto}\label{fig:geralproposto}}
+	\label{fig:esquemageral}
+\end{figure}
 
 
 \subsection{Objetivos Específicos} 
 
 \begin{itemize}[label={-}]
-	\item O sistema deve ser independente em relação ao meio em que os dados são transportados do SCOB para os boxes; Desta forma em atualizações futuras o método atual de transferência de dados pode ser substituido por telemetria;
+	\item O sistema deve ser independente em relação ao meio em que os dados são transportados do SCOB para os boxes, desta forma em atualizações futuras o método atual de transferência de dados pode ser substituído por telemetria;
 	\item O \textit{software} deve ser independente de sistema operacional;
 	\item O \textit{software} deve possuir informações específicas para cada área da engenharia automobilística;
-	\item O \textit{software} deve ser construido de forma a facilitar a manutenção evolutiva, preparado para chegada de novos sensores;
+	\item O \textit{software} deve ser construído de forma a facilitar a manutenção evolutiva, preparado para chegada de novos sensores;
 	\item Deve ser criada e atualizada uma documentação do \textit{software};
 	\item Deve se instaurar uma cultura de utilização de engenharia de \textit{software} para facilitar manutenções adaptativas e manutenções corretivas.
 \end{itemize}
+
+A Figura \ref{fig:SCRUMboard} mostra graficamente o quadro de atividades que será utilizado no método \textit{SCRUM} visto na Seção \ref{sec:engenhariadesoftware}, para auxílio na produção do sistema. O quadro inicia com a etapa de \textit{Product Backlog}, nesta etapa serão realizadas conversas para definir as necessidades do \textit{product owner} e tais necessidades vão ser convertidas em histórias, estas histórias tem o objetivo de mostrar a equipe de produção o que o usuário pretende alcançar com certa melhoria. Na etapa de \textit{Sprint Backlog} as histórias com maior relevância para o sistema são trabalhadas, estas histórias tem tempo máximo de conclusão de 2 semanas e se concluídas irão passar para a próxima etapa, se não foram, voltam para o \textit{Product Backlog}. A próxima etapa é a \textit{Validação}, nesta etapa as histórias codificadas na etapa anterior serão validadas junto a equipe com entrevistas e testes de funcionalidade para prevenção de \textit{bugs}, caso as histórias não sejam validadas elas devem retornar ao \textit{Product Backlog}. A etapa de \textit{Code Review} tem como objetivo fazer uma revisão do código para toda a equipe de desenvolvimento, no caso específico deste trabalho, esta etapa será utilizada para manter a equipe de eletrônica do baja Velociraptor atualizada e facilitar a manutenção futura do \textit{software}. Na última etapa (\textit{Feito}) são armazenadas as histórias concluídas.    
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Diagrama com a sequência de atividades proposta para o método \textit{SCRUM}.}
+		\includegraphics[scale=0.35]{SCRUMboard.png} 
+		\caption*{Fonte: Autor.}
+		\label{fig:SCRUMboard}
+\end{figure} 
