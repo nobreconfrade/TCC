@@ -1,3 +1,10 @@
 \chapter{Desenvolvimento do software}
 	\label{ch:desenvolvimento}
 Neste capítulo é discutido um pouco sobre o desenvolvimento do \textit{software} de tratamento de dados proposto por este trabalho. 
+
+O programa feito para os boxes é implementado em sua totalidade na linguagem interpretada \textit{Python}, esta foi escolhida devido a facilidades que a mesma proporciona no uso de bibliotecas de suporte ao sistema e de interfaceamento gráfico além de ser uma linguagem comum ao autor. Outras linguagens como o C++ foram consideras para a aplicação, porém como o fluxo de dados não é feito em grande escala a velocidade de processamento não é uma questão primária. O sistema que atua no microcontrolador é programado em C e C++, pois este é o padrão de desenvolvimento para os microcontroladores utilizados. 
+
+\section{Bibliotecas utilizadas}
+O sistema de tratamento de dados utiliza de diversos recursos disponíveis na linguagem \textit{Python}, nesta seção será descrito quais são e o que fazem. 
+
+Um dos principais componentes do \textit{software} é a interface gráfica, ou interface do usuário. É por meio dela que a equipe presente nos boxes pode ter acesso as informações do veículo, observando os gráficos de tração, velocidade, extensometria, etc... Para a concepção da interface gráfica foi utilizada uma \textit{framework} chamada Qt \footnote[1]{Site: \url{https://www.qt.io/}}.
