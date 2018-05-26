@@ -287,6 +287,52 @@ As equipes de automobilismo não divulgam muitas informações sobre seus sistem
 
 Apesar da falta de literatura neste campo, este problema deve ser contornado com a utilização de métodos de engenharia de \textit{software}. Na Seção \ref{sec:engenhariadesoftware} são discutidos modelos que podem ajudar no levantamento de requisitos junto a equipe e impulsionar alguns atributos do sistema positivamente. 
 
+\subsection{ZigBee}
+\label{sec:zigbee}
+ O protocolo ZigBee de conexão sem fio foi criado em 1998 e padronizado em 2003. Atualmente é mantido pela \textit{ZigBee Alliance}\footnote[1]{Site: \url{http://www.zigbee.org/}} e o sistema tem como foco atingir as metas de \cite{gislason2008zigbee}:
+
+ \begin{itemize}
+ 	\item Ser altamente confiável;
+ 	\item Ter custo benefício alto;
+ 	\item Execução em baixa energia;
+ 	\item Conseguir reter alto padrão de segurança;e
+ 	\item Ter um padrão global de execução.
+ \end{itemize}
+
+Estas metas são atingidas com um porém. O ZigBee não atua em taxas de transferência de dados de outros protocolos como o WiFi por exemplo. O Quadro \ref{tab:protocolscomparition} apresenta uma comparação entre alguns parâmetros destes dois protocolos, o que deixa explicito que ambos possuem enfoques diferentes e são utilizados para aplicações diferentes.
+
+\begin{table}[]
+\centering
+\caption{Comparação de alguns parâmetros dos protocolos 802.11b e 802.15.4.}
+\label{tab:protocolscomparition}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Parâmetro}            & \textbf{Wifi (802.11b)} & \textbf{ZigBee (802.15.4)} \\ \hline
+Faixa de Frequência           & 2.4Ghz                  & 2.4Ghz                     \\ \hline
+Alcance                       & 35-140m                 & $\sim$100m                 \\ \hline
+Consumo de energia em uso     & 400mA                   & $\sim$30mA                 \\ \hline
+Consumo de energia em standby & 20mA                    & 3µA                        \\ \hline
+Taxa de transferência         & 11Mbps                  & 250Kbps                    \\ \hline
+\end{tabular}
+\caption*{Fonte: Autor.}
+\end{table}
+
+O ZigBee possui uma arquitetura própria que se encaixa parcialmente no modelo de rede OSI de 7 camadas\cite{gislason2008zigbee}. Alguns elementos são os mesmo como a camada física, a camada de enlace e a camada de rede. As outras camadas restantes do modelo OSI são remodeladas nas camadas \textit{ZigBee Device Object} e \textit{Application Framework}, a Figura \ref{fig:camadaszigbee} é um diagrama exemplificando o funcionamento das camadas do protocolo com algumas informações a mais como a comunicação entre as camadas por \textit{Service Access Points}.
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Diagrama com camadas do protocolo ZigBee.}
+		\includegraphics[scale=0.5]{camadaszigbee} 
+		\caption*{Fonte: \cite{gislason2008zigbee}.}
+		\label{fig:camadaszigbee}
+\end{figure} 
+
+Quanto a topologia de rede, o ZigBee opera em topologias de estrela, malha e árvore. Entretanto, independente de topologia, o ZigBee atua sobre uma PAN criada em um ID específico, esta PAN possui os nós (módulos físicos do ZigBee) onde cada nó da topologia pode ser um dos três tipos de nós do protocolo, sendo eles o coordenador, o roteador e o \textit{end-point} \cite{elahi2009zigbee}. O coordenador tem a responsabilidade de criar a rede PAN, o roteador repassa pacotes enviados de \textit{end-points} e os ditos \textit{end-points} são os nós que possuem os sensores e atuadores da rede, uma característica específica deste tipo de nós é que os mesmos podem entrar em \textit{stand-by} para consumir menos energia quando não estão operando.    
+
+\begin{comment}
+
 \subsection{Engenharia de software}
 \label{sec:engenhariadesoftware}
 
@@ -339,6 +385,9 @@ O método trabalha em ciclos de desenvolvimento de semanas ou até mesmo um mês
 		\caption*{Fonte: \cite{wazlawick2013engenharia}}
 		\label{fig:scrumquadro}
 \end{figure} 
+
+
+\end{comment}
 
 % ------------------------------------------- PARTE DA ANDRESSA, DEIXAR PARA PEGAR ALGUM EXEMPLO DE ESCRITA
 \begin{comment}
