@@ -4,7 +4,7 @@ Neste capítulo é discutido sobre o desenvolvimento do \textit{software} de tra
 
 O programa feito para receber as informações provindas do veículo é implementado em sua totalidade na linguagem interpretada Python, esta foi escolhida devido a facilidades que a mesma proporciona no uso de bibliotecas de suporte ao sistema e de interfaceamento gráfico além de ser uma linguagem comum ao autor. Outras linguagens como o C++ foram consideras para a aplicação, porém como o fluxo de dados não é feito em grande escala a velocidade de processamento não é uma questão primária. O sistema que atua no microcontrolador é programado em C e C++, pois este é o padrão de desenvolvimento para os microcontroladores utilizados. 
 
-\section{Bibliotecas utilizadas}
+\section{Bibliotecas e Softwares utilizados}
 O sistema de tratamento de dados utiliza de diversos recursos disponíveis na linguagem Python sejam eles bibliotecas ou até mesmo \textit{frameworks}, a seguir é discutido sobre tais recurso e como são utilizados no sistema. 
 
 Um dos principais componentes do \textit{software} é a interface gráfica, ou interface do usuário. É por meio dela que a equipe presente nos boxes pode ter acesso as informações do veículo, observando os gráficos de tração, velocidade, extensometria, etc... Para a concepção da interface gráfica foi utilizada um \textit{framework} chamada Qt \footnote[1]{Site: \url{https://www.qt.io/}}. O Qt é nativamente utilizado para o C++ na construção de interfaces gráficas, para utilizar-lo no Python, é necessário a utilização de uma biblioteca auxiliar chamada PyQt\footnote[2]{Site: \url{https://riverbankcomputing.com/software/pyqt/intro}}. Tanto o Qt quanto o PyQt estão disponíveis em Windows, distribuições Linux e MacOS, um fator importante visto que a equipe utiliza o sistema operacional Windows, porém o autor desenvolveu o sistema utilizando a distribuição Manjaro XFCE e Ubuntu 16.04. Este é um tema recorrente neste trabalho, todas as bibliotecas utilizadas devem ser portáveis para ambos os sistemas operacionais Windows ou distribuições Linux como declarado nos objetivos específicos. As versões utilizadas das bibliotecas foram o Qt 5.5.1 e o PyQt 5
@@ -13,4 +13,30 @@ Para o desenvolvimento foi utilizada a ferramenta Designer da \textit{framework}
 
 Uma característica específica deste sistema é a execução da parte gráfica em paralelo a recepção de dados. Isto implica que a parte gráfica deve ser executada em conjunto com o recebimento dos dados enviados pelo veículo, tendo isto em mente, é necessário utilizar de processamento paralelo para fazer ambas as tarefas. A solução encontrada para tal foi a biblioteca \textit{multiprocessing} do Python. Esta biblioteca possui funções para criação de \textit{pipes}, estruturas que retorna dois objetos representando um "tubo" de passagem de informação entre dois processos, ambos os processos tem acesso a comandos de envio e recepção de dados para conversa entre duas aplicações em tempo real. A função \textit{pipe} opera de forma \textit{duplex}, onde ambos os lados podem enviar e receber dados, porém devido ao escopo atual do projeto o sistema será utilizado como \textit{simplex}.    
 
-Para a conexão do sistema de boxes com o microcontrolador é utilizado o protocolo de rede sem fio ZigBee. O protocolo é definido como uma solução para sistemas de baixa taxa de transmissão de dados e baixo consumo de energia, ele opera no alcance de uma PAN (\textit{Personal Area Network}) e tem uma taxa de transferência de até 250Kbps \cite{elahi2009zigbee}. Estas características levaram a utilização deste protocolo para a comunicação sem fio entre os sistemas citados.
+Para a conexão do sistema de boxes com o microcontrolador é utilizado o protocolo de rede sem fio ZigBee. O protocolo é definido como uma solução para sistemas de baixa taxa de transmissão de dados e baixo consumo de energia, ele opera no alcance de uma PAN (\textit{Personal Area Network}) e tem uma taxa de transferência de até 250Kbps \cite{elahi2009zigbee}. Estas características e outras informações revisadas na Seção \ref{sec:zigbee} levaram a utilização deste protocolo para a comunicação sem fio entre os sistemas citados. todo{COMENTAR SOBRE XBEE-PYTHON}
+
+Um \textit{software} auxiliar foi utilizado para a configuração dos módulos ZigBee. O XCTU faz a configuração inicial entre os módulos a fim de ordenar quem terá qual papel na rede. Além de configurar quem será o coordenador e quem será o roteador/\textit{end-point}, o XCTU também configura qual será o ID da PAN, em qual modo o módulo irá operar seja ele API ou AT, permite envio de pacotes de teste entre os envolvidos e também de sequencias de pacotes. 
+
+\section{Hardware utilizado}
+
+Para o desenvolvimento do sistema foram utilizados alguns equipamentos de \textit{hardware}. Devida a proposta de solução foi necessária a utilização de alguns equipamentos específicos para o desenvolvimento do sistema , estes equipamentos utilizados no sistema são listados a seguir:
+
+\begin{itemize}
+	\item 2x Xbee ZigBee PRO series 2;
+	\item XBee Explorer USB Adapter;
+	\item Arduino Uno;
+	\item Sensores automotivos;e
+	\item Computador para receber os dados. 
+\end{itemize}  
+
+Os módulos Xbee ZigBee PRO series 2 foram adicionados no decorrer do projeto. A telemetria foi uma das aspirações iniciais desse trabalho de conclusão de curso, porém devido ao tamanho do escopo do projeto a execução desta parte do sistema foi retirada. Contudo durante as reuniões feitas em conjunto com o sub-sistema de eletrônica da baja Velociraptor, foi decidido que a telemetria entraria no escopo anual do projeto 2018 do veículo. Com a entrada deste projeto, alguns dos membros se comprometeram a ajudar na construção desse sistema e também na compra dos módulos para uso do protocolo ZigBee. Tendo todo este cenário, foi decidido entre o autor e orientador pela opção de produção deste sistema pronto para receber dados via telemetria, no qual o sistema que adquire os dados é executado ao mesmo tempo que o sistema que trata esses mesmos dados. 
+
+Em relação ao módulo utilizado, ele possui as características base do protocolo ZigBee porém a versão comprada (PRO) possui algumas característica melhoradas. Por exemplo: O alcance urbano do Xbee ZigBee series 2 é de 60m, já da versão PRO é de 90m, o alcance em área rural/aberta, com pouca interferência de sinal, é de 1.200m na versão padrão e 3.200m na versão PRO \cite{xbeespecs}.
+
+O Xbee Explorer USB Adapter é um adaptador USB para utilizar o módulo ZigBee ligado direto aos computadores para configurar. Ele permite a utilização do \textit{software} XCTU de forma eficiente, sem a necessidade de conectar o módulo ZigBee a um outro módulo FTDI, que faz conexão com o computador. 
+
+O Arduino Uno foi utilizado por ser mais prático de realizar os testes, porém nenhuma biblioteca exclusiva das plataformas Arduino foi utilizada para enviar os dados do microcontrolador para o computador. O módulo Xbee ZigBee recebe os dados tratados e envia para a outra ponta de forma serial pelos pinos \textit{Rx} e \textit{Tx}, a outra ponta dos dados deve se receber os mesmos e tratar-los de acordo com o protocolo.
+
+\section {Software criado}
+Nesta seção será apresentado o \textit{software} que foi criado para tratamento dos dados provindos do veículo. Na seção será demonstrada tela a tela quais são as funcionalidades do sistema.  
+
