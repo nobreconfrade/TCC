@@ -38,5 +38,53 @@ O Xbee Explorer USB Adapter é um adaptador USB para utilizar o módulo ZigBee l
 O Arduino Uno foi utilizado por ser mais prático de realizar os testes, porém nenhuma biblioteca exclusiva das plataformas Arduino foi utilizada para enviar os dados do microcontrolador para o computador. O módulo Xbee ZigBee recebe os dados tratados e envia para a outra ponta de forma serial pelos pinos \textit{Rx} e \textit{Tx}, a outra ponta dos dados deve se receber os mesmos e tratar-los de acordo com o protocolo.
 
 \section {Software criado}
-Nesta seção será apresentado o \textit{software} que foi criado para tratamento dos dados provindos do veículo. Na seção será demonstrada tela a tela quais são as funcionalidades do sistema.  
+Nesta seção será apresentado o \textit{software} que foi criado para tratamento dos dados provindos do veículo. Na seção será demonstrada tela a tela quais são as funcionalidades do sistema.
 
+Inicialmente temos a tela principal na Figura \ref{fig:telaprincipal}. Nela é possível ir para as outras telas de funcionalidades do sistema na barra superior, além de ter as funcionalidades padrões para provas de enduro, uma das modalidades dos campeonatos de baja SAE. Na região superior direita é possível visualizar o contador do nível do combustível, ele inicia em 8 marcações quando o tanque está cheio e progride até 0 quando o tanque de combustível está vazio. No canto inferior direito esta presente os alertas importantes para a equipe durante a prova, entre os alertas existem o de temperatura do motor que é ligado quando o óleo do mesmo passa de 125$^\circ$C, o de extensometria que é acionado quando algum ponto do chassis está sobre muita tensão e o da bateria que é acionado quando a tensão da bateria está baixa. No canto inferior esquerdo está disposto os dados de velocidade do veículo em quilômetros por hora e a temperatura do motor na ultima coleta de dados. Por ultimo no canto superior esquerdo é disposta a tabela de dados de volta, onde cada volta são mostrados os dados de número da volta, tempo de volta e combustível restante após a mesma. 
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tela principal do programa.}
+		\includegraphics[scale=0.4]{telaprincipal} 
+		\caption*{Fonte: Autor.}
+		\label{fig:telaprincipal}
+\end{figure}    
+
+A segunda tela possui as informações da extensometria. Estes dados são provindo de quatro sensores espalhados no carro que dão informação sobre a torção exercida sobre o chassis em aceleração, saltos e curvas. A Figura \ref{fig:telaextensometria} demonstra essa tela.
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tela de extensometria.}
+		\includegraphics[scale=0.4]{telaextensometria} 
+		\caption*{Fonte: Autor.}
+		\label{fig:telaextensometria}
+\end{figure}    
+
+A tela da Figura \ref{fig:telatestes} possui as opções de gráficos que se desejam visualizar. O principal objetivo é gerar gráficos para o monitoramento do veículo em testes ou em prova. O gráfico de força de tração tem como foco os testes do veículo, já os de velocidade/RPM, temperatura do motor e de nível do combustível são utilizados em tempo de prova. Mais de um gráfico pode ser aberto ao mesmo tempo, acrescentando modularidade a disposição das telas, a Figura \ref{fig:telagrafico} exibe um exemplo de como o gráfico é \textit{plotado}, os dados são provenientes do veículo.
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tela de seleção de gráficos de teste e monitoramento.}
+		\includegraphics[scale=0.4]{telatestes} 
+		\caption*{Fonte: Autor.}
+		\label{fig:telatestes}
+\end{figure}    
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tela com exemplo de gráfico de temperatura do motor por tempo em segundos.}
+		\includegraphics[scale=0.4]{telagrafico} 
+		\caption*{Fonte: Autor.}
+		\label{fig:telagrafico}
+\end{figure}    
+
+Por ultimo a Figura \ref{fig:telaconfiguracao} exibe as configurações do sistema. Atualmente a única opção é desligar o sistema, fechando as portas, \textit{pipes} e processos abertos. 
+
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Tela de configurações.}
+		\includegraphics[scale=0.4]{telaconfiguracoes} 
+		\caption*{Fonte: Autor.}
+		\label{fig:telaconfiguracao}
+\end{figure}    
