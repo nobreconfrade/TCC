@@ -303,6 +303,19 @@ O ZigBee possui uma arquitetura própria que se encaixa parcialmente no modelo d
 
 Quanto a topologia de rede, o ZigBee opera em topologias de estrela, malha e árvore. Entretanto, independente de topologia, o ZigBee atua sobre uma PAN criada em um ID específico, esta PAN possui os nós (módulos físicos do ZigBee) onde cada nó da topologia pode ser um dos três tipos de nós do protocolo, sendo eles o coordenador, o roteador e o \textit{end-point} \cite{elahi2009zigbee}. O coordenador tem a responsabilidade de criar a rede PAN, o roteador repassa pacotes enviados de \textit{end-points} e os ditos \textit{end-points} são os nós que possuem os sensores e atuadores da rede, uma característica específica deste tipo de nós é que os mesmos podem entrar em \textit{stand-by} para consumir menos energia quando não estão operando.    
 
+\subsection{Estrutura de envio}
+O ZigBee possui uma estrutura definida para o envio de dados sem fio. O quadro de dados do protocolo possui alguns \textit{stamps} para envio dos dados de forma que o destino das mensagens possa ser definido no envio, possua um indicador de força do sinal com o byte chamado de RSSI (\textit{Received Signal Strength Indicator}) e possibilita o envio de mensagens de sucesso de transmissão. 
+
+A Figura \ref{fig:xbeeframe} exibe alguns quadros que podem ser enviados nos módulos XBee, da empresa \textit{Digi International}. É possível observar na estrutura dos quadros alguns \textit{stamps} obrigatório que permitem que as características citadas sejam possíveis. O primeiro byte é o delimitador de início do quadro, ele indica que a partir daquele byte existe um quadro válido, os dois próximos bytes são referentes ao início das informações do quadro (\textit{Most Significant Byte}) e ao fim das informações (\textit{Least Significant Byte}. Os próximos \textit{N} bytes são referentes aos dados do quadro, que variam de acordo com o tipo de quadro enviado, contudo, está parte inicia com um byte de identificação e prossegue com seus \textit{N} bytes de dados. Por fim é enviado um byte de \textit{checksum}, este byte é utilizado para verificar a integridade dos componentes\cite{xbeetutorial}.       
+
+\begin{figure}[!htb]
+	\centering
+		\caption{Alguns quadros de envio dos modelos XBee.}
+		\includegraphics[scale=0.5]{xbeeframe} 
+		\caption*{Fonte: \cite{xbeetutorial}.}
+		\label{fig:xbeeframe}
+\end{figure} 
+
 
 \section{Software}
 \label{sec:software}
