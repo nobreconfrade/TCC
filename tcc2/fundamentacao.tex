@@ -1,6 +1,6 @@
 \chapter{Fundamentação Teórica}
 	\label{ch:fundamentacao}
-Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente será explicado como funciona a organização Baja SAE e as provas as quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microprocessadores estudados para servir como base do SCOB vão ser discutidas. Por último é realizada uma análise de práticas de engenharia de \textit{software} que irão auxiliar na construção do sistema que será proposto.
+Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente será explicado como funciona a organização Baja SAE e as provas as quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microprocessadores estudados para servir como base do SCOB vão ser discutidas. Uma análise sobre o protocolo ZigBee é feita e por último são discutidos alguns conceitos dos sistemas de tratamento e aquisição de dados.
 
 \section{Baja SAE}
 A categoria Baja, organizado pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizada, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros a serem montados devem, por regulamento, \cite{regulamentobajasae} serem feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou kevlar \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também segundo o regulamento o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
@@ -137,6 +137,11 @@ Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figu
 	\subfigure[Fonte:\cite{Fraden2016}][Exemplo do funcionamento. Fonte:\cite{Fraden2016}]{\includegraphics[width=5cm]{sensorCvtfunc}\label{fig:sensorCvtfunc}}
 	\label{fig:sensorCvt}
 \end{figure}
+
+\subsection{Célula de carga}
+A célula de carga é um sensor que transforma grandeza física em sinal elétrico. Ele funciona a partir do princípio da variação da resistência ôhmica de um extensômetro quando este é submetido a alguma força \cite{Fraden2016}. Esta deformação então é transformada em uma saída de tensão que é capturada pela porta analógica do microcontrolador.
+
+Este sensor foi utilizado para verificar a ação de forças sobre o \textit{link} da suspensão, uma das peças responsáveis por manter os pneus na cambagem correta. O modélo utilizado foi o Z-20.   
 
 \subsection{Deslocamento do amortecedor}
 
@@ -343,8 +348,6 @@ Este subsistema é produzido por três motivos: ele deve realizar a comunicaçã
 O sistema de tratamento de dados deve receber as informações fornecidas pelo meio de transporte de informação, neste caso o cartão SD, e com esses dados atualizar o ambiente e informar a equipe dos boxes de dados mais profundos sobre o veículo. Este sistema pode ser feito para dados recebidos posteriormente a testes ou com telemetria, sendo feita análises em tempo real. Algumas análises de dados que podem ser realizadas neste \textit{software} seriam torção do chassi, temperatura do motor em relação a velocidade do veículo, tempo de prova, entre outras informações. 
 
 As equipes de automobilismo não divulgam muitas informações sobre seus sistemas de tratamento de dados. A exceção é quando estes sistemas utilizam de plataformas de empresas privadas para codificação destes \textit{software}, nestes casos os artigos comentam que estas plataformas são utilizadas para criação da GUI (Graphical User Interface) e geralmente usadas em conjunto com dispositivos de aquisição de dados também adquiridos de empresas privadas \cite{applicationOfData2010}\cite{vehicleDataAcquisition2014}\cite{designAndImplementation2015}\cite{developmentOfAn2016}. Contudo estas informações não são relevantes para o trabalho proposto na área de tratamento de dados, pois o sistema que deve ser desenvolvido para este fim deve ser projetado e executado junto a equipe Velociraptor com um requisito de baixo custo monetário. Um artigo revisado produziu sua própria plataforma de tratamento de dados em C e C++ \cite{racecarInstrumentationFor2012} e utiliza de alguns conceitos comentados na Seção \ref{sec:aquisicaodedados}, como utilização de \textit{comma-separated values} para formatação dos arquivos de dados. 
-
-Apesar da falta de literatura neste campo, este problema deve ser contornado com a utilização de métodos de engenharia de \textit{software}. Na Seção \ref{sec:engenhariadesoftware} são discutidos modelos que podem ajudar no levantamento de requisitos junto a equipe e impulsionar alguns atributos do sistema positivamente. 
 
 \begin{comment}
 
