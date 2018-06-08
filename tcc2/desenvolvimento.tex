@@ -18,6 +18,7 @@ Para a conexão do sistema de boxes com o microcontrolador é utilizado o protoc
 Um \textit{software} auxiliar foi utilizado para a configuração dos módulos ZigBee. O XCTU faz a configuração inicial entre os módulos a fim de ordenar quem terá qual papel na rede. Além de configurar quem será o coordenador e quem será o roteador/\textit{end-point}, o XCTU também configura qual será o ID da PAN, em qual modo o módulo irá operar seja ele API ou AT, permite envio de pacotes de teste entre os envolvidos e também de sequencias de pacotes. 
 
 \section{Hardware utilizado}
+\label{sec:hardwareutilizado}
 
 Para o desenvolvimento do sistema foram utilizados alguns equipamentos de \textit{hardware}. Devida a proposta de solução foi necessária a utilização de alguns equipamentos específicos para o desenvolvimento do sistema , estes equipamentos utilizados no sistema são listados a seguir:
 
@@ -32,7 +33,7 @@ Para o desenvolvimento do sistema foram utilizados alguns equipamentos de \texti
 
 Os módulos Xbee ZigBee PRO series 2 foram adicionados no decorrer do projeto. A telemetria foi uma das aspirações iniciais desse trabalho de conclusão de curso, porém devido ao tamanho do escopo do projeto a execução desta parte do sistema foi retirada. Contudo durante as reuniões feitas em conjunto com o sub-sistema de eletrônica da baja Velociraptor, foi decidido que a telemetria entraria no escopo anual do projeto 2018 do veículo. Com a entrada deste projeto, alguns dos membros se comprometeram a ajudar na construção desse sistema e também na compra dos módulos para uso do protocolo ZigBee. Tendo todo este cenário, foi decidido entre o autor e orientador pela opção de produção deste sistema pronto para receber dados via telemetria, no qual o sistema que adquire os dados é executado ao mesmo tempo que o sistema que trata esses mesmos dados. 
 
-Em relação ao módulo utilizado, ele possui as características base do protocolo ZigBee porém a versão comprada (PRO) possui algumas característica melhoradas. Por exemplo: O alcance urbano do Xbee ZigBee series 2 é de 60m, já da versão PRO é de 90m, o alcance em área rural/aberta, com pouca interferência de sinal, é de 1.200m na versão padrão e 3.200m na versão PRO \cite{xbeespecs}.
+Em relação ao módulo utilizado, ele possui as características base do protocolo ZigBee porém a versão comprada (PRO) possui algumas característica melhoradas. Por exemplo: O alcance urbano do Xbee ZigBee series 2 é de 40 metros, já da versão PRO é de 90 metros, o alcance em área rural/aberta, com pouca interferência de sinal, é de 120 metros na versão padrão e 3.200m na versão PRO \cite{xbeespecs}. Para a realizão dos testes foram utilizados um modulo Xbee ZigBee series 2 e um Xbee ZigBee PRO series 2, ambos são compatíveis sem necessidade de uso de bibliotecas auxiliares ou modificação de \textit{firmware}.
 
 O Xbee Explorer USB Adapter é um adaptador USB para utilizar o módulo ZigBee ligado direto aos computadores para configurar. Ele permite a utilização do \textit{software} XCTU de forma eficiente, sem a necessidade de conectar o módulo ZigBee a um outro módulo FTDI, que faz conexão com o computador. 
 

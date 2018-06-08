@@ -303,7 +303,7 @@
 %%%%%%%%%%%%%%%Novas Definicoes%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\grau#1{\gdef\@grau{#1}}
 \def\tipo#1{\gdef\@tipo{#1}}
-\def\bacharelado{\grau{BACHAREL} \tipo{Relat\'{o}rio de Trabalho de Conclus\~{a}o de Curso (TCC)}}
+\def\bacharelado{\grau{BACHAREL} \tipo{Monografia de Trabalho de Conclus\~{a}o de Curso (TCC)}}
 \def\licenciatura{\grau{LICENCIADO} \tipo{Monografia}}
 \def\especializacao{\grau{ESPECIALISTA} \tipo{Monografia}\es@ptrue}
 \def\mestrado{\grau{MESTRE} \tipo{Diserta\c{c}\~{a}o}\ps@dtrue}
@@ -1087,9 +1087,9 @@
 \newdimen\bibindent
 \setlength\bibindent{1.5em}
 \newenvironment{thebibliography}[1]
-     {\chapter*{\bibname}%
+     {\chapter*{Refer\^{e}ncias}%
      \thispagestyle{empty}
-     \addcontentsline{toc}{chapter}{\bibname}
+     \addcontentsline{toc}{chapter}{Refer\^{e}ncias}
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
