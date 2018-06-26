@@ -127,7 +127,7 @@ O tipo de transmissão escolhida para o Baja Velociraptor foi uma caixa de câmb
 		\label{fig:cvt}
 \end{figure} 
 
-Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma tensão correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtfunc} exemplifica este processo descrito. A saída deste sensor é dada em valores analógicos porém vai conectada a uma entrada digital do microcontrolador devido ao uso do protocolo I$^2$C.       
+Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma tensão correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtfunc} exemplifica o que é explicado no paragrafo anterior, mostrando o processo de atuação do sensor. A saída deste sensor é dada em valores analógicos porém vai conectada a uma entrada digital do microcontrolador devido ao uso do protocolo I$^2$C.       
 
 \begin{figure}[!htb]
 	\center
@@ -211,7 +211,7 @@ O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocid
 
 O mercado atual de sistemas embarcados oferece uma opção para melhor produtividade e facilidade de desenvolvimento, a custo da especificidade envolvida nos projetos. As placas de desenvolvimento são componentes criados para suportar um ambiente com uma unidade de processamento, geralmente um microcontrolador, um cristal gerador de \textit{clock} e uma entrada para interfaceamento com o computador (USB ou mini-USB), outros periféricos também podem ser encontrados de fábrica dependendo do modelo, como acelerômetros e giroscópios. 
 
-Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes, tamanhos, poder de processamento, poder de armazenamento e assim por diante. O Quadro \ref{tab:placasdedesenvolvimento} traz uma comparação entre várias placas de desenvolvimento que utilizam microcontroladores vistos no Quadro \ref{tab:microcontroladores}. A dimensão é dada em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}. A dimensão de altura das placas Arduino são estimativas, visto que oficialmente estes números não são divulgados. 
+Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes, tamanhos, poder de processamento, poder de armazenamento e assim por diante. O Quadro \ref{tab:placasdedesenvolvimento} traz uma comparação entre várias placas de desenvolvimento que utilizam microcontroladores vistos no Quadro \ref{tab:microcontroladores}. A dimensão é dada em milímetro, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\cite{filipeflop}. A dimensão de altura das placas Arduino são estimativas, visto que oficialmente estes números não são divulgados. 
 
 \begin{table}[!htb]
 	\centering
@@ -243,7 +243,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 \end{figure} 
      
 
-Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\footnote{https://www.filipeflop.com/}.
+Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\cite{filipeflop}.
 
 \begin{table}[!htb]
 	\centering
@@ -266,7 +266,7 @@ Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\
 
 \section{ZigBee}
 \label{sec:zigbee}
- O protocolo ZigBee de conexão sem fio foi criado em 1998 e padronizado em 2003. Atualmente é mantido pela \textit{ZigBee Alliance}\footnote[1]{Site: \url{http://www.zigbee.org/}} e o sistema tem como foco atingir as metas de \cite{gislason2008zigbee}:
+ O protocolo ZigBee de conexão sem fio foi criado em 1998 e padronizado em 2003. Atualmente é mantido pela \textit{ZigBee Alliance}\cite{zb} e o sistema tem como foco atingir as metas de \cite{gislason2008zigbee}:
 
  \begin{itemize}
  	\item Ser altamente confiável;
