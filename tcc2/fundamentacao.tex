@@ -24,25 +24,24 @@ Os sensores, junto com atuadores, são os métodos em que circuitos elétricos c
 
 Os sensores presentes em um veículo se dividem em duas categorias \cite{vehicleDataAcquisition2014} - aqueles que são feitos para o conforto do passageiro e aqueles feitos para garantir o devido funcionamento da parte dinâmica do veículo. O primeiro é importante para a lista de opcionais do carro consequentemente agradar ao consumidor comum. O segundo é critico ao engenheiro em alto nível, sem impacto imediato para o publico em geral.
 
-Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de automobilismo em tempo real é dado por \citeonline{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, \citeonline{projetoMiniBaja2006} continua e comenta que quando o motor está numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor ajustado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
+Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de automobilismo em tempo real é dado por \citeonline{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, \citeonline{projetoMiniBaja2006} comenta que quando o motor está numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor ajustado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
 
-O projeto do veículo \textit{off-road} do grupo Velociraptor já conta atualmente com alguns sensores. A Figura \ref{fig:sensoresBaja} mostra o esquema do sistema elétrico usado atualmente no veículo. Os espaços em azul são sensores utilizados na competição, os espaços em vermelho são sensores usados para testes de bancada. 
+O projeto do veículo \textit{off-road} do grupo Velociraptor já conta atualmente com alguns sensores. A Figura \ref{fig:sensoresBaja} demonstra o esquema do sistema elétrico usado atualmente no veículo. Os espaços em azul são sensores utilizados na competição, os espaços em vermelho são sensores usados para testes de bancada. 
+
 
 \begin{figure}[!htb]
 	\centering
 		\caption{Diagrama do sistema elétrico usados atualmente no Baja.}
 		\includegraphics[scale=0.35]{sensoresBaja} 
-		\caption*{Fonte: Autor.}
+		\caption*{Fonte: Elaborada pelo autor, 2017.}
 		\label{fig:sensoresBaja}
 \end{figure} 
 
-As subseções a seguir explicam o funcionamento destes sensores.
-
 \subsection{Temperatura do motor}
 
-O motor deve operar em uma temperatura ideal abaixo de 110$^\circ$C para desempenhar bem o seu papel. Se sobreaquecidas, as peças do conjunto começam a operar de forma incorreta e isto pode ocasionar rompimento da junta de vedação da galeria de óleo, diminuição da viscosidade do óleo e em casos de exposição prolongada a sobreaquecimento, travamento do pistão dentro da câmara do motor. Para evitar casos como estes citados acima é importante ter a informação sobre a temperatura do motor, com a informação o piloto pode forçar menos o motor na prova para manter a temperatura estável ou o carro pode ser parado para uma manutenção de emergência.
+O motor deve operar em uma temperatura ideal abaixo de 110$^\circ$C para desempenhar bem o seu papel \cite{Fraden2016}. Se sobreaquecidas, as peças do conjunto começam a operar de forma incorreta e isto pode ocasionar rompimento da junta de vedação da galeria de óleo, diminuição da viscosidade do óleo e em casos de exposição prolongada a sobreaquecimento, travamento do pistão dentro da câmara do motor. Para evitar casos como estes citados acima é importante ter a informação sobre a temperatura do motor, com a informação o piloto pode forçar menos o motor na prova para manter a temperatura estável ou o carro pode ser parado para uma manutenção de emergência.
 
-Para realizar a aquisição desta grandeza é utilizado um sensor termistor de coeficiente negativo de temperatura (conhecido como NTC). Este sensor é facilmente encontrado em lojas de eletrônica, porém o utilizado no projeto Baja Velociraptor é preparado para o ambiente automotivo com um corpo metálico para proteção contra ruídos e melhor posicionamento do sensor. A Figura \ref{fig:sensorTemperaturaautomotivo} é um desenho que demonstra qual é a composição deste sensor. O sensor vai acoplado ao cárter do motor, submerso em óleo. O sensor emite um sinal analógico proporcional a temperatura que ele é exposto, a resistência dele diminuí de acordo com o aumento de temperatura e aumenta com temperaturas mais baixas \cite{Fraden2016}.  
+Para realizar a aquisição desta grandeza é utilizado um sensor termistor de coeficiente negativo de temperatura (conhecido como NTC). Este sensor é facilmente encontrado em lojas de eletrônica, porém o utilizado no projeto Baja Velociraptor é preparado para o ambiente automotivo com um corpo metálico para proteção contra ruídos e melhor posicionamento do sensor. O sensor de temperatura vai acoplado ao cárter do motor, submerso em óleo. O sensor emite um sinal analógico proporcional a temperatura que ele é exposto, a resistência dele diminuí de acordo com o aumento de temperatura e aumenta com temperaturas mais baixas \cite{Fraden2016}. A Figura \ref{fig:sensorTemperaturaautomotivo} é um desenho que apresenta qual a composição deste sensor de caráter automotivo.   
 
 \begin{figure}[!htb]
 	\centering
@@ -56,33 +55,21 @@ Para realizar a aquisição desta grandeza é utilizado um sensor termistor de c
 
 \subsection{Frequência de rotação do motor}
 
-A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que está conectado a uma transmissão. Esta transmissão por sua vez está conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que a RPM trata neste meio.
+A revolução/rotação por minuto (RPM) é uma grandeza que indica quantas rotações por minuto um certo objeto realiza, sendo em torno de si mesmo ou em torno de um outro objeto \cite{Dias2010}. No contexto do automobilismo, a RPM é a quantidade de vezes em que um motor realiza um giro completo, movendo o virabrequim que está conectado a uma transmissão. Esta transmissão por sua vez está conectada a um eixo e consequentemente o eixo está conectado a roda. Esta é uma ideia básica de como funciona o sistema de conversão de um fenômeno químico (combustão do motor) em força física e o que a RPM trata neste meio.
 
-Para fazer aquisição desta grandeza, é utilizada uma técnica que envolve a vela. A vela, que pode ser vista na Figura \ref{fig:vela}, está presente em todos os carros movidos a motores de combustão a gasolina, sua função é causar a centelha que começa o processo de explosão do combustível misturado com ar na câmara interna do motor.       
+Para fazer aquisição desta grandeza, uma das técnicas possíveis para retirada dessa grandeza envolve a vela automotiva\cite{projetoMiniBaja2006}. A vela está presente em todos os carros movidos a motores de combustão a gasolina, sua função é causar a centelha que começa o processo de explosão do combustível misturado com ar na câmara interna do motor.       
 
-\begin{figure}[!htb]
-	\centering
-		\caption{Vela automotiva.}
-		\includegraphics[scale=0.15]{velaAutomotiva} 
-		\caption*{Fonte: \cite{vela}.}
-		\label{fig:vela}
-\end{figure} 
-
-A vela produz uma centelha a cada ciclo de explosão da gasolina e esta centelha é produzida a partir de uma descarga de energia com tensão de 12KV. A carga de energia é capturada por uma bobina em volta do fio elétrico da vela e conectada a uma entrada digital do microprocessador. Quando ocorrer a centelha é executada uma interrupção no programa do microprocessador e incrementado um valor em uma variável reservada para a RPM. Esta variável ainda deve ser tratada antes de ser passada para o painel pois a centelha da vela é ativada uma vez a cada ciclo do motor, porém dentro de um ciclo completo (admissão, compressão, explosão e exaustão) é realizado dois giros do virabrequim, ou seja, duas RPM. Depois de ter o valor multiplicado por dois, o valor é mostrado no painel. 
+A vela produz uma centelha a cada ciclo de explosão da gasolina e esta centelha é produzida a partir de uma descarga de energia com tensão de 12KV\cite{projetoMiniBaja2006}. A carga de energia é capturada por uma bobina em volta do fio elétrico da vela e conectada a uma entrada digital do microprocessador. Quando ocorrer a centelha é executada uma interrupção no programa do microprocessador e incrementado um valor em uma variável reservada para a RPM. Esta variável ainda deve ser tratada antes de ser passada para o painel pois a centelha da vela é ativada uma vez a cada ciclo do motor, porém dentro de um ciclo completo (admissão, compressão, explosão e exaustão) é realizado dois giros do virabrequim, ou seja, duas RPM. Depois de ter o valor multiplicado por dois, o valor é mostrado no painel. 
 
 \subsection{Velocidade do veículo}
 
-A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020 que pode ser visto na Figura \ref{fig:sensorVelocidade}. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda quadrada \cite{MTEsensorVelocidade} e que deve ser tratada de acordo com a sua aplicação. Este tipo de sensor é utilizado em carros da montadora General Motors.  
+A velocidade do veículo é a grandeza que indica a quão rápido um veículo se move de um ponto A para um ponto B. Para aquisição desta grandeza é utilizado um sensor MTE 73020. Este sensor vai acoplado perto do eixo do veículo e captura a rotação do mesmo graças ao efeito Hall, esta rotação é transformada em uma onda quadrada \cite{MTEsensorVelocidade} e que deve ser tratada de acordo com a sua aplicação. Este tipo de sensor é utilizado em carros da montadora General Motors.  
 
-\begin{figure}[!htb]
-	\centering
-		\caption{Sensor de velocidade MTE 73020.}
-		\includegraphics[scale=0.25]{sensorVelocidade} 
-		\caption*{Fonte: \cite{MTEsensorVelocidade}.}
-		\label{fig:sensorVelocidade}
-\end{figure} 
+No Baja Velociraptor o sensor está acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo. A Figura \ref{fig:sensorVelocidadeEx} apresenta como este sensor está acoplado em direção ao disco do freio. A todo momento que um dente do freio passa próximo ao sensor o mesmo emite um sinal que está conectado a entrada digital do microprocessador no SCOB. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio, resultando na fórmula matemática:
 
-No Baja Velociraptor o sensor está acoplado ao eixo traseiro, próximo ao motor, e captura a rotação do freio traseiro que está conectado ao eixo, como pode ser visto na Figura \ref{fig:sensorVelocidadeEx}. Toda vez que um dente do freio passa próximo ao sensor o mesmo emite um sinal que está conectado a entrada digital do microprocessador no SCOB. A frequência recebida pelo SCOB é tratada, levando em consideração o tamanho da roda e número de dentes no freio, resultando na fórmula matemática a seguir:
+	$$V = \frac{S_{vel}}{N_{freio}} \times 2 \pi r  \times \frac{3.6km}{h},$$  
+
+Sendo $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de vezes que o sensor produziu uma sinal quadrada, $N_{freio}$ é a quantidade de dentes presente no freio customizado do Baja Velociraptor, $2 \pi r$ é fórmula do comprimento da circunferência e $\frac{3.6km}{h}$ transforma o resultado de metros por segundo para quilômetros por hora. Esta fórmula já era utilizada no sistema de aquisição de dados desenvolvido pelos membros do sub-sistema da eletrônica embarcada.
 
 \begin{figure}[!htb]
 	\centering
@@ -92,9 +79,6 @@ No Baja Velociraptor o sensor está acoplado ao eixo traseiro, próximo ao motor
 		\label{fig:sensorVelocidadeEx}
 \end{figure} 
 
-	$$V = \frac{S_{vel}}{N_{freio}} \times 2 \pi r  \times \frac{3.6km}{h},$$  
-
-Sendo $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de vezes que o sensor produziu uma sinal quadrada, $N_{freio}$ é a quantidade de dentes presente no freio customizado do Baja Velociraptor, $2 \pi r$ é fórmula do comprimento da circunferência e $\frac{3.6km}{h}$ transforma o resultado de metros por segundo para quilômetros por hora.
 
 \subsection{Nível do combustível}
 \label{subsec:combustivel}
@@ -116,15 +100,7 @@ Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de m
 
 O motor a combustão de um veículo gera torque e potência, porém esta entrega é linear e pode ser ineficaz dependendo do terreno em que o veículo se encontra. Para contornar esta situação e ter sempre o torque desejado, é adicionada uma transmissão ao veículo. A transmissão converte a saída de torque e potência com o objetivo de manter o motor o mais próximo possível da hipérbole de tração ideal \cite{Naunheimer2011}. 
 
-O tipo de transmissão escolhida para o Baja Velociraptor foi uma caixa de câmbio CVT (\textit{Continuosly Variable Transmission}). Para a equipe, a informação da temperatura da transmissão é importante para o projeto do veículo pois o câmbio CVT possui componentes sensíveis como a correia utilizada no sistema. Na Figura \ref{fig:cvt} é possível visualizar um exemplo de câmbio CVT, a correia é o objeto pintado de vermelho e o rompimento da mesma por fatores como desgaste excessivo causaria falha total do sistema. 
-
-\begin{figure}[!htb]
-	\centering
-		\caption{Câmbio CVT.}
-		\includegraphics[scale=0.2]{cvt} 
-		\caption*{Fonte: \cite{cvt}.}
-		\label{fig:cvt}
-\end{figure} 
+O tipo de transmissão escolhida para o Baja Velociraptor foi uma caixa de câmbio CVT (\textit{Continuosly Variable Transmission}). Para a equipe, a informação da temperatura da transmissão é importante para o projeto do veículo pois o câmbio CVT possui componentes sensíveis como a correia utilizada no sistema. 
 
 Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtimg}). Este sensor, da categoria termopilha, opera utilizando o mesmo princípio de um sensor termopar. Um termopar simples é um dispositivo de baixa sensibilidade que responde a mudanças da casa de 1$^\circ$C com uma mudança de dezenas de $\mu V$, um sensor de termopilha é uma cadeia de termopares conectados, tipicamente 50 a 100 junções, para obter um sinal de 50 a 100 vezes mais forte. O sensor opera com uma membrana com uma capacidade térmica baixa devido a seu tamanho, e esta membrana varia de temperatura de acordo com a radiação térmica para que desta forma a temperatura seja calculada gerando uma tensão correspondente \cite{Fraden2016}. A Figura \ref{fig:sensorCvt}\subref{fig:sensorCvtfunc} exemplifica o que é explicado no paragrafo anterior, mostrando o processo de atuação do sensor. A saída deste sensor é dada em valores analógicos porém vai conectada a uma entrada digital do microcontrolador devido ao uso do protocolo I$^2$C.       
 
@@ -140,23 +116,13 @@ Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figu
 \subsection{Célula de carga}
 A célula de carga é um sensor que transforma grandeza física em sinal elétrico. Ele funciona a partir do princípio da variação da resistência ôhmica de um extensômetro quando este é submetido a alguma força \cite{Fraden2016}. Esta deformação então é transformada em uma saída de tensão que é capturada pela porta analógica do microcontrolador.
 
-Este sensor foi utilizado para verificar a ação de forças sobre o \textit{link} da suspensão, uma das peças responsáveis por manter os pneus na cambagem correta. O modélo utilizado foi o Z-20.   
+Este sensor foi utilizado para verificar a ação de forças sobre o \textit{link} da suspensão, uma das peças responsáveis por manter os pneus na cambagem correta. O modelo utilizado foi o Z-20 devido a sua disponibilidade no mercado e também a sua capacidade de carga de até uma tonelada.   
 
 \subsection{Deslocamento do amortecedor}
 
 O amortecedor, que está contido no conjunto da suspensão, tem o papel de controlar o carro de forma a manter as rodas do veículo em constante contato com o solo, trazendo melhor desempenho para o mesmo. Este sensor de deslocamento de amortecedor é utilizado em bancada para testes e para realização da aquisição da grandeza, neste caso a distância de deslocamento, foi criado um instrumento semelhante a um amortecedor em cano PVC e este instrumento fica acoplado ao lado do amortecedor. Quando o amortecedor sofre tensão o esforço também é transmitido para o instrumento e nele é realizada a aquisição da grandeza. Estes dados adquiridos ajudam na tomada de decisão da configuração da suspensão, escolhendo entre uma suspensão mais rígida ou mais suave dependendo do terreno, calibragem dos pneus, etc.
 
-É utilizado um sensor GP2Y0A21YK0F da SHARP como pode ser visto na Figura \ref{fig:sensorAmortecedor} para fazer a aquisição do deslocamento do amortecedor. Este sensor vai acoplado em uma das pontas do cano, apontado para a outra. A distância efetiva de operação do sensor é de 10cm - 80cm \cite{SHARP} o que é suficiente para o cenário. O sinal resultante da aquisição é analógico e proporcional a distância do sensor em relação ao objeto em que ele está apontado. 
-
-
-\begin{figure}[!htb]
-	\centering
-		\caption{Sensor de deslocamento do amortecedor SHARP GP2Y0A21YK0F.}
-		\includegraphics[scale=0.15]{sensorAmortecedor} 
-		\caption*{Fonte: \cite{SHARP}.}
-		\label{fig:sensorAmortecedor}
-\end{figure} 
-
+É utilizado um sensor GP2Y0A21YK0F da SHARP para fazer a aquisição do deslocamento do amortecedor. Este sensor vai acoplado em uma das pontas do cano, apontado para a outra. A distância efetiva de operação do sensor é de 10cm - 80cm \cite{SHARP} o que é suficiente para o cenário. O sinal resultante da aquisição é analógico e proporcional a distância do sensor em relação ao objeto em que ele está apontado. 
 
 \section{Microcontroladores}
 \label{sec:microcontroladores}
@@ -175,15 +141,14 @@ Os microcontroladores são os dispositivos de maior importância dentro de um si
 Em \citeonline{aSurveyTo2010} e em \citeonline{mazidi2008pic} são citados alguns fatores que são levados em conta na escolha do microcontrolador, porém tais critérios podem ser revistos e redimensionados para a aplicação no Baja Velociraptor. Os critérios de maior relevância então são:
 
 \begin{itemize}
-	\item Baixo consumo de energia;
-	\item Quantidade de RAM e ROM suficiente para a rotina desejada;
-	\item Facilidade de desenvolvimento;
+	\item Baixo consumo de energia para melhor dimensionamento da bateria;
+	\item Quantidade de RAM e ROM suficiente para a rotina desejada a fim de guardar variáveis importantes durante o tempo de execução do código no microcontrolador;
 	\item Quantidade suficiente de entradas/saídas para periféricos; 
-	\item Programável em C; e
-	\item Custo.
+	\item Programável em C, devido ao conhecimento da equipe na linguagem; e
+	\item Custo, com valores entre R\$50 e R\$150.
 \end{itemize}   
 
-A equipe Velociraptor atualmente já trabalha com um microcontrolador da Atmel, o ATmega328 em uma placa de desenvolvimento Arduino Nano V3. Este microcontrolador supre todos os critérios citados acima para o cenário atual, com os sensores citados na seção \ref{sec:sensores}, porém com a criação de um novo \textit{software} para tratamento de dados e em conjunto com os objetivos futuros da equipe de atualizações nas tecnologia utilizadas, o uso deste microcontrolador deve ser revisado para ser mantido ou descartado. Outro fator discutido com a equipe é o uso de microcontroladores que são suportados por placas de desenvolvimento, revisadas na seção \ref{sec:placasdedesenvolvimento}. As placas de desenvolvimento facilitariam a criação do SCOB, e servem para o escopo deste projeto já que são placas desenvolvidas para um ambiente de prototipagem. 
+A equipe Velociraptor atualmente já trabalha com um microcontrolador da Atmel, o ATmega328 em uma placa de desenvolvimento Arduino Nano V3. Este microcontrolador supre todos os critérios citados acima para o cenário atual, com os sensores citados na subseção \ref{sec:sensores}, porém com a criação de um novo \textit{software} para tratamento de dados e em conjunto com os objetivos futuros da equipe de atualizações nas tecnologia utilizadas, o uso deste microcontrolador deve ser revisado para ser mantido ou descartado. Outro fator discutido com a equipe é o uso de microcontroladores que são suportados por placas de desenvolvimento, revisadas na seção \ref{sec:placasdedesenvolvimento}. As placas de desenvolvimento facilitam a criação do SCOB, e servem para o escopo deste projeto já que são placas desenvolvidas para um ambiente de prototipagem. 
 
 O Quadro \ref{tab:microcontroladores} faz uma comparação entre microcontroladores encontrados em placas de desenvolvimento no mercado das marcas Intel\footnote{\href{https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/quark-c1000-datasheet.pdf}{Quark SE Microcontroller C1000 Datasheet}}, Atmel\footnote{\href{http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf}{ATmega16U4/ATmega32U4 Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-42735-8-bit-AVR-Microcontroller-ATmega328-328P_Datasheet.pdf}{ATmega328/P Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf}{Atmel ATmega640/V-1280/V-1281/V-2561/V Datasheet}}\footnote{\href{http://www.atmel.com/Images/Atmel-11057-32-bit-Cortex-M3-Microcontroller-SAM3X-SAM3A_Datasheet.pdf}{SAM3X / SAM3A Series Datasheet}} e NXP\footnote{\href{https://www.nxp.com/docs/en/data-sheet/KL25P80M48SF0.pdf}{NXP Kinetis KL25 Sub-Family Datasheet}} . 
 O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocidade de \textit{clock} 5.25 vezes maior que o microcontrolador mais lento e 48 vezes mais memória. O microcontrolador da Intel possui uma boa quantidade de memoria RAM, porém sua pinagem é menor que do ATmega328, o microcontrolador de menor desempenho da família Atmel visto neste comparativo. 
@@ -219,7 +184,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 	\begin{tabular}{|l|l|l|l|l|}
 	\hline
 	\rowcolor[HTML]{9B9B9B} 
-	\textbf{Modelo}      & \textbf{Fabricante} & \textbf{Microcontrolador} & \textbf{Dimensões} & \textbf{Preço} \\ \hline
+	\textbf{Modelo}      & \textbf{Fabricante} & \textbf{Microcontrolador} & \textbf{Dimensões (mm)} & \textbf{Preço} \\ \hline
 	FRDM-KL25Z		   & NXP                 & MKL25Z128VLK4             & 80 x 53 x 6        & R\$169,90      \\ \hline
 	Genuino 101        & Intel               & Quark SE                  & 70 x 55 x 20       & R\$229,90      \\ \hline
 	Uno R3             & Arduino             & ATmega328                 & 68.6 x 53.4 x 25   & R\$44,90       \\ \hline
@@ -231,7 +196,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 	\caption*{Fonte: Autor.}
 \end{table}
 
-É possível tirar algumas análises deste quadro, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100, isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} mostra como está estruturado o painel atualmente com um Arduino Nano V3. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
+É possível tirar algumas análises deste quadro, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100. Isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} mostra como está estruturado o painel atualmente com um Arduino Nano V3. Este mesmo painel é feito em alumínio protege o SCOB de vários fatores externos como lama e água, a figura também mostra as fiações elétricas que chegam no painel e algumas partes mecânicas como fluído de freios e pedais de aceleração/frenagem. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
 
 \begin{figure}[!htb]
 	\centering
@@ -242,7 +207,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 \end{figure} 
      
 
-Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de rodar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\cite{filipeflop}.
+Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no Capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de executar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\cite{filipeflop}.
 
 \begin{table}[!htb]
 	\centering
