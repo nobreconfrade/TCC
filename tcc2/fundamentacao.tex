@@ -1,31 +1,30 @@
 \chapter{Fundamentação Teórica}
 	\label{ch:fundamentacao}
-Nesta sessão serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente será explicado como funciona a organização Baja SAE e as provas as quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microcontroladores estudados para servir como base do SCOB vão ser discutidas. Uma análise sobre o protocolo ZigBee é feita e por último são discutidos alguns conceitos dos sistemas de tratamento e aquisição de dados.
+Neste capítulo serão descritos alguns dos conceitos essenciais para a compreensão do trabalho. Inicialmente é explicado como funciona a organização Baja SAE e as provas as quais os carros são submetidos, além de um breve resumo da história da equipe Velociraptor. Também são descritos alguns detalhes técnicos de quais sensores são/devem ser aplicados no percurso do trabalho além de informações sobre os microcontroladores estudados para servir como base do SCOB vão ser discutidas. Uma análise sobre o protocolo ZigBee é feita e, por último, são discutidos alguns conceitos dos sistemas de tratamento e aquisição de dados.
 
 \section{Baja SAE}
-A categoria Baja, organizada pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizada, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros a serem montados devem, por regulamento, \cite{regulamentobajasae} serem feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou kevlar \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também segundo o regulamento o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
+A categoria Baja, organizada pela SAE (\textit{Society of Automotive Engineers}), é uma categoria de \textit{motorsport} feita para estudantes de engenharia aprofundarem seu conhecimento na área com um projeto real, no qual toda a construção do veículo deve ser realizada, bem como sua documentação e busca por patrocinadores para viabilização do projeto. Os carros montados devem, por regulamento, \cite{regulamentobajasae} ser feitos de uma estrutura tubular de aço, fibra de vidro, carbono ou \textit{kevlar} \cite{projetoMiniBaja2006}, com quatro ou mais rodas e motor padrão de 10HP. Também, segundo o regulamento, o carro deve suportar uma pessoa de até um metro e noventa de altura e 113,4 quilogramas de peso. Todo o sistema de suspensão, freio, transmissão e chassi é projetado e executado pela equipe participante.  
 
-As provas realizadas pelos veículos em um torneio , segundo \cite{bajasae} são:
+As provas realizadas pelos veículos em um torneio, segundo \cite{bajasae} são:
 \begin{itemize}
-	\item Segurança;
-	\item Motor;
-	\item Conforto;
-	\item Frenagem;
-	\item Suspensão;
-	\item Capacidade de tração;
-	\item Dirigibilidade; e
-	\item Enduro.
+	\item Segurança, testando itens do veículo como gaiola e chassis no quesito de segurança;
+	\item Conforto, testando o conforto do piloto ao utilizar o veículo;
+	\item Frenagem, testando a capacidade dos freios do veículo;
+	\item Suspensão, testando toda a parte de suspensão do veículo em um terreno acidentado;
+	\item Capacidade de tração, testando a capacidade do veículo de tracionar puxando uma certa quantidade de peso;
+	\item Dirigibilidade, testando o veículo com \textit{slalom}; e
+	\item Enduro, uma prova de corrida de longa duração.
 \end{itemize}
 
 Além destas provas a equipe também deve realizar uma apresentação com o projeto completo do veículo, contando pontos para o torneio. A equipe que obtiver a maior quantidade de pontos nas provas citadas acima ganha o torneio.
 
 \section{Sensores}
 \label{sec:sensores}
-Os sensores, junto com atuadores, são os métodos em que circuitos elétricos conseguem se comunicar com o mundo físico realizando algumas tarefas como fazer uma medida de alguma grandeza. Em \citeonline{Fraden2016} o sensor é definido como "um dispositivo que recebe um estimulo e responde com um sinal elétrico". Existem diversos tipos de sensores e tipos de variações específicas para cada área de uso, sensores de posição como os potenciômetros, sensores de velocidade angular como tacômetros com rotores dentados, sensores de proximidade com uso de sensores óticos e assim por diante \cite{kilian2001modern}. 
+Os sensores, junto com atuadores, são os métodos em que circuitos elétricos conseguem se comunicar com o mundo físico realizando algumas tarefas como fazer uma medida de alguma grandeza. Um sensor pode ser definido como um dispositivo que recebe um estimulo e, como resposta, transmite um sinal elétrico \cite{Fraden2016}. Existem diversos tipos de sensores e tipos de variações específicas para cada área de uso, sensores de posição como os potenciômetros, sensores de velocidade angular como tacômetros com rotores dentados, sensores de proximidade com uso de sensores óticos e assim por diante \cite{kilian2001modern}. 
 
 Os sensores presentes em um veículo se dividem em duas categorias \cite{vehicleDataAcquisition2014} - aqueles que são feitos para o conforto do passageiro e aqueles feitos para garantir o devido funcionamento da parte dinâmica do veículo. O primeiro é importante para a lista de opcionais do carro consequentemente agradar ao consumidor comum. O segundo é critico ao engenheiro em alto nível, sem impacto imediato para o publico em geral.
 
-Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de automobilismo em tempo real é dado por \citeonline{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, o autor continua e comenta que quando o motor esta numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor ajustado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
+Um bom exemplo de como o sensoriamento pode ajudar no desempenho de uma equipe de automobilismo em tempo real é dado por \citeonline{projetoMiniBaja2006}. Quando superaquecido, o motor fica fora do seu regime ideal de trabalho, causando um maior desgaste dos componentes internos e por consequência uma perda de rendimento, \citeonline{projetoMiniBaja2006} continua e comenta que quando o motor está numa temperatura muito abaixo da ideal, o rendimento também sofre alteração, porque o consumo de combustível aumenta e o torque é menor em relação a um motor ajustado. Para manter o processo dentro de uma faixa desejada, sensores de temperatura do óleo devem ser instalados, com eles é possível manter um histórico da faixa de funcionamento do motor e além de manter o piloto constantemente atualizado da temperatura do motor do seu veículo, o que permite que o piloto tenha mais liberdade em forçar o carro para melhorar o tempo de volta ou dirigir mais cautelosamente, a fim de evitar desgaste excessivo nas peças e melhor consumo de gasolina, fatores que devem ser levados em consideração em uma prova de automobilismo. 
 
 O projeto do veículo \textit{off-road} do grupo Velociraptor já conta atualmente com alguns sensores. A Figura \ref{fig:sensoresBaja} mostra o esquema do sistema elétrico usado atualmente no veículo. Os espaços em azul são sensores utilizados na competição, os espaços em vermelho são sensores usados para testes de bancada. 
 
