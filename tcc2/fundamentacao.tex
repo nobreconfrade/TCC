@@ -47,7 +47,7 @@ Para realizar a aquisição desta grandeza é utilizado um sensor termistor de c
 	\centering
 		\caption{Variante do termistor para aplicação automotiva.}
 		\includegraphics[scale=0.6]{sensorTemperaturaautomotivo} 
-		\caption*{Fonte:\cite{sensortempauto} modificado pelo autor.}
+		\caption*{Fonte:\cite{sensortempauto} modificado pelo autor, 2017.}
 		\label{fig:sensorTemperaturaautomotivo}
 \end{figure} 
 
@@ -75,7 +75,7 @@ Sendo $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de ve
 	\centering
 		\caption{Sensor de velocidade conectado próximo ao freio traseiro.}
 		\includegraphics[scale=0.5]{sensorVelocidadeEx} 
-		\caption*{Fonte: UDESC Baja Velociraptor (2017).}
+		\caption*{Fonte: UDESC Baja Velociraptor, 2017.}
 		\label{fig:sensorVelocidadeEx}
 \end{figure} 
 
@@ -91,7 +91,7 @@ Para se adequar a estes novos regulamentos, foi utilizada uma nova técnica de m
 	\centering
 		\caption{\textit{Shield} criado para sensores de efeito Hall US1881.}
 		\includegraphics[scale=0.7]{sensorTanque} 
-		\caption*{Fonte: UDESC Baja Velociraptor (2017).}
+		\caption*{Fonte: UDESC Baja Velociraptor, 2017.}
 		\label{fig:sensorTanque}
 \end{figure} 
 
@@ -167,7 +167,7 @@ O microcontrolador com maior poder de processamento é o AT91SAM3X8E com velocid
 		MKL25Z128VLK4  & NXP                 & 48 MHz          & 60                   & 6                      & 16 KB SRAM   \\ \hline
 		Quark SE C1000 & Intel               & 32 MHz         & 14                   & 6                      & 80 KB SRAM   \\ \hline
 		\end{tabular}
-	\caption*{Fonte: Autor.}
+	\caption*{Fonte: Elaborada pelo autor, 2017.}
 \end{table}
 
 \subsection{Placas de desenvolvimento} 
@@ -193,7 +193,7 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 	Due                & Arduino             & AT91SAM3X8E               & 101.52 x 53.3 x 25 & R\$139,90      \\ \hline
 	Leonardo R3        & Arduino             & ATmega32u4                & 68.6 x 53.3 x 25   & R\$59,90       \\ \hline
 	\end{tabular}
-	\caption*{Fonte: Autor.}
+	\caption*{Fonte: Elaborada pelo autor, 2017.}
 \end{table}
 
 É possível tirar algumas análises deste quadro, por exemplo, o Arduino Nano V3 possui o mesmo poder de processamento de um Arduino Uno R3 porém utiliza uma área aproximadamente 4.5 vezes menor do que o mesmo, custando uma pequena margem a mais. Levando em conta o cenário do projeto, as \textbf{dimensões} de uma placa de desenvolvimento é um fator que também deve ser levado em conta na tomada de decisão, o que não se aplicava a microcontroladores pois estes possuem um tamanho pequeno em comparação com placas de desenvolvimento que possuem alguns componentes extras já citados no início da seção. Algumas placas como Genuino 101, Due e FRDM-KL25Z possuem um preço que varia acima da casa dos R\$100. Isto pode ser justificado com desempenho superior em relação as demais placas e alguns periféricos extras já inclusos nestas placas, como acelerômetro em ambas FRDM-KL25Z e Genuino 101. Placas com dimensões como o modelo Mega 2560 R3 não são a melhor opção para ser utilizadas no veículo para uso durante a prova visto a impossibilidade de criar um \textit{shield} para proteção da mesma e acoplamento no painel dianteiro do veículo. A Figura \ref{fig:paineldianteiro} mostra como está estruturado o painel atualmente com um Arduino Nano V3. Este mesmo painel é feito em alumínio protege o SCOB de vários fatores externos como lama e água, a figura também mostra as fiações elétricas que chegam no painel e algumas partes mecânicas como fluído de freios e pedais de aceleração/frenagem. Uma mudança de tamanho requisitaria uma revisão do projeto de eletrônica do veículo.
@@ -202,12 +202,12 @@ Estas placas de desenvolvimento possuem diversos microcontroladores, fabricantes
 	\centering
 		\caption{Foto do painel dianteiro atual do Baja Velociraptor.}
 		\includegraphics[scale=0.05]{paineldianteiro} 
-		\caption*{Fonte: Autor.}
+		\caption*{Fonte: Elaborada pelo autor, 2017.}
 		\label{fig:paineldianteiro}
 \end{figure} 
      
 
-Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no Capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de executar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros, todas as placas tiveram seus preços verificados no mês de novembro do ano 2017 em um \textit{e-commerce} de componente eletrônicos\cite{filipeflop}.
+Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImplementation2015} traz uma solução de aquisição de dados para veículos (mais informações do trabalho no Capítulo \ref{ch:trabalhos}) com o uso de placas de melhor desempenho, com maior número de periféricos porém ainda em uma escala reduzida. Este tipo de placa é comumente chamado de \textit{Single Board Computer} por serem capazes de executar um sistema operacional completo, e não apenas um programa como nas placas analisadas no Quadro \ref{tab:placasdedesenvolvimento}. O Quadro \ref{tab:singleboard} tem a comparação de algumas destas \textit{Single Board Computer} na qual as dimensões são dadas em milímetros.
 
 \begin{table}[!htb]
 	\centering
@@ -222,10 +222,10 @@ Todavia, além das placas de desenvolvimento citadas, \citeonline{designAndImple
 		Green         & BeagleBone          & AM3358 & 1000 MHz       & 65                   & 7                      & 512 MB DDR3   & 86 x 53 x 19       & R\$329,90      \\ \hline
 		Black Rev.C   & BeagleBone          & AM3358 & 1000 MHz       & 65                   & 7                      & 512 MB DDR3   & 86 x 53 x 19       & R\$399,90      \\ \hline
 	\end{tabular}}
-	\caption*{Fonte: Autor.}
+	\caption*{Fonte: Elaborada pelo autor, 2017.}
 \end{table}
 
-Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\$250 e dificilmente serão escolhidos para o projeto, porém de todas as \textit{Single Board Computer} comparadas, o modelo Zero W tem a proposta mais atraente. Com memória RAM de 512 MB, velocidade de \textit{clock} de 1.000 MHz, dimensões 65 x 30 x 5 milímetros e preço R\$79,90 esta \textit{Single Board Computer} possui poder de processamento e memória acima dos modelos vistos no Quadro \ref{tab:placasdedesenvolvimento} por um preço abaixo da casa de R\$100. A utilização dessas placas ainda traz vantagens como a possibilidade de rodar um sistema operacional dentro do veículo, o que pode ser explorado para melhor processamento de dados dentro do SCOB, utilização de linguagens interpretadas e utilização de sistemas gerenciadores de bancos de dados para adição de uma camada extra de confiabilidade nos dados entregues pelo sistema. A desvantagem da utilização deste sistema é o custo, que aumenta uma margem pequena (cerca de 1.6 vezes o valor atual da placa de desenvolvimento), o aumento da complexidade do sistema com a adição de um sistema operacional dentro do veículo, o aumento das dimensões da placa de desenvolvimento (de 45 x 18 x 7,6 para 65 x 30 x 5) e a falta de entradas analógicas no modelo Zero W sendo assim necessário o uso de módulos ADC externos. 
+Os modelos Raspberry Pi 3 Model B, BeagleBone Green e BeagleBone Black Rev.C possuem um preço acima da faixa de R\$250 e não foram escolhidos para o projeto, porém de todas as \textit{Single Board Computer} comparadas, o modelo Zero W tem a proposta mais atraente. Com memória RAM de 512 MB, velocidade de \textit{clock} de 1.000 MHz, dimensões 65 x 30 x 5 milímetros e preço R\$79,90 esta \textit{Single Board Computer} possui poder de processamento e memória acima dos modelos vistos no Quadro \ref{tab:placasdedesenvolvimento} por um preço abaixo da casa de R\$100. A utilização dessas placas ainda traz benefícios como a possibilidade de rodar um sistema operacional dentro do veículo, o que pode ser explorado para melhor processamento de dados dentro do SCOB, utilização de linguagens interpretadas e utilização de sistemas gerenciadores de bancos de dados para adição de uma camada extra de confiabilidade nos dados entregues pelo sistema. Por outro lado a utilização deste sistema traz um custo elevado (cerca de 1.6 vezes o valor atual da placa de desenvolvimento), o aumento da complexidade do sistema com a adição de um sistema operacional dentro do veículo. Também é verificável o aumento das dimensões da placa de desenvolvimento (de 45 x 18 x 7,6 milímetros para 65 x 30 x 5 milímetros) e a falta de entradas analógicas no modelo Raspberry Pi Zero W sendo assim necessário o uso de módulos ADC externos. Estes dados foram levados em consideração entre a equipe e deve ser apenas implementado em projetos futuros.
 
 
 \section{ZigBee}
@@ -240,7 +240,7 @@ Os modelos 3 Model B, Green e Black Rev.C possuem um preço acima da faixa de R\
  	\item Ter um padrão global de execução.
  \end{itemize}
 
-Estas metas são atingidas com um porém. O ZigBee não atua em taxas de transferência de dados de outros protocolos como o WiFi por exemplo. O Quadro \ref{tab:protocolscomparition} apresenta uma comparação entre alguns parâmetros destes dois protocolos, o que deixa explicito que ambos possuem enfoques diferentes e são utilizados para aplicações diferentes.
+Estas metas são atingidas com um porém. O ZigBee não atua em taxas de transferência de dados de outros protocolos como o WiFi por exemplo. O Quadro \ref{tab:protocolscomparition} apresenta uma comparação entre alguns parâmetros destes dois protocolos, o que deixa explícito que ambos possuem enfoques diferentes e são utilizados para aplicações diferentes.
 
 \begin{table}[]
 \centering
@@ -249,17 +249,17 @@ Estas metas são atingidas com um porém. O ZigBee não atua em taxas de transfe
 \begin{tabular}{|l|l|l|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Parâmetro}            & \textbf{Wifi (802.11b)} & \textbf{ZigBee (802.15.4)} \\ \hline
+\textbf{Parâmetro}            & \textbf{Wifi (802.11g)} & \textbf{ZigBee (802.15.4)} \\ \hline
 Faixa de Frequência           & 2.4Ghz                  & 2.4Ghz                     \\ \hline
-Alcance                       & 35-140m                 & $\sim$100m                 \\ \hline
+Alcance                       & 38-140m                 & $\sim$100m                 \\ \hline
 Consumo de energia em uso     & 400mA                   & $\sim$30mA                 \\ \hline
 Consumo de energia em standby & 20mA                    & 3$\mu$A                        \\ \hline
-Taxa de transferência         & 11Mbps                  & 250Kbps                    \\ \hline
+Taxa de transferência         & 54Mbps                  & 250Kbps                    \\ \hline
 \end{tabular}
-\caption*{Fonte: Autor.}
+\caption*{Fonte: Elaborada pelo autor, 2018.}
 \end{table}
 
-O ZigBee possui uma arquitetura própria que se encaixa parcialmente no modelo de rede OSI de 7 camadas\cite{gislason2008zigbee}. Alguns elementos são os mesmo como a camada física, a camada de enlace e a camada de rede. As outras camadas restantes do modelo OSI são remodeladas nas camadas \textit{ZigBee Device Object} e \textit{Application Framework}, a Figura \ref{fig:camadaszigbee} é um diagrama exemplificando o funcionamento das camadas do protocolo com algumas informações a mais como a comunicação entre as camadas por \textit{Service Access Points}.
+O ZigBee possui uma arquitetura própria que se encaixa parcialmente no modelo de rede OSI de 7 camadas\cite{gislason2008zigbee}. Alguns elementos são os mesmo como a camada física, a camada de enlace e a camada de rede. As outras camadas restantes do modelo OSI são remodeladas nas camadas \textit{ZigBee Device Object} e \textit{Application Framework}, a Figura \ref{fig:camadaszigbee} é um diagrama exemplificando o funcionamento das camadas do protocolo com algumas informações a mais como a comunicação entre as camadas por \textit{Service Access Points}. Esta figura apresenta as características das camadas, mostrando como estão conectadas entre si.
 
 
 \begin{figure}[!htb]
@@ -270,12 +270,12 @@ O ZigBee possui uma arquitetura própria que se encaixa parcialmente no modelo d
 		\label{fig:camadaszigbee}
 \end{figure} 
 
-Quanto a topologia de rede, o ZigBee opera em topologias de estrela, malha e árvore. Entretanto, independente de topologia, o ZigBee atua sobre uma \textit{Personal Area Network} (ou PAN) criada em um \textit{identifier} (ID) específico, esta PAN possui os nós (módulos físicos do ZigBee) onde cada nó da topologia pode ser um dos três tipos de nós do protocolo, sendo eles o coordenador, o roteador e o \textit{end-point} \cite{elahi2009zigbee}. O coordenador tem a responsabilidade de criar a rede PAN, o roteador repassa pacotes enviados de \textit{end-points} e os ditos \textit{end-points} são os nós que possuem os sensores e atuadores da rede, uma característica específica deste tipo de nós é que os mesmos podem entrar em \textit{stand-by} para consumir menos energia quando não estão operando.    
+Quanto a topologia de rede, o ZigBee opera em topologias de estrela, malha e árvore. Entretanto, independente de topologia, o ZigBee atua sobre uma \textit{Personal Area Network} (PAN) criada em um \textit{identifier} (ID) específico, esta PAN possui os nós (módulos físicos do ZigBee) no qual cada nó da topologia pode ser um dos três tipos de nós do protocolo, sendo eles o coordenador, o roteador e o \textit{end-point} \cite{elahi2009zigbee}. O coordenador tem a responsabilidade de criar a rede PAN, o roteador repassa pacotes enviados de \textit{end-points} e os ditos \textit{end-points} são os nós que possuem os sensores e atuadores da rede, uma característica específica deste tipo de nós é que os mesmos podem entrar em \textit{stand-by} para consumir menos energia quando não estão operando.    
 
 \subsection{Estrutura de envio}
 O ZigBee possui uma estrutura definida para o envio de dados sem fio. O quadro de dados do protocolo possui alguns \textit{stamps} para envio dos dados de forma que o destino das mensagens possa ser definido no envio, possua um indicador de força do sinal com o byte chamado de RSSI (\textit{Received Signal Strength Indicator}) e possibilita o envio de mensagens de sucesso de transmissão. 
 
-A Figura \ref{fig:xbeeframe} exibe alguns quadros que podem ser enviados nos módulos XBee, da empresa \textit{Digi International}. É possível observar na estrutura dos quadros alguns \textit{stamps} obrigatório que permitem que as características citadas sejam possíveis. O primeiro byte é o delimitador de início do quadro, ele indica que a partir daquele byte existe um quadro válido, os dois próximos bytes são referentes ao início das informações do quadro (\textit{Most Significant Byte}) e ao fim das informações (\textit{Least Significant Byte}. Os próximos \textit{N} bytes são referentes aos dados do quadro, que variam de acordo com o tipo de quadro enviado, contudo, esta parte inicia com um byte de identificação e prossegue com seus \textit{N} bytes de dados. Por fim é enviado um byte de \textit{checksum}, este byte é utilizado para verificar a integridade dos componentes\cite{xbeetutorial}.       
+A Figura \ref{fig:xbeeframe} exibe alguns quadros que podem ser enviados nos módulos XBee, da empresa \textit{Digi International}. É possível observar na estrutura dos quadros alguns \textit{stamps} obrigatório que permitem que as características citadas sejam possíveis. O primeiro byte é o delimitador de início do quadro, ele indica que a partir daquele byte existe um quadro válido, os dois próximos bytes são referentes ao início das informações do quadro (\textit{Most Significant Byte}) e ao fim das informações (\textit{Least Significant Byte}). Os próximos \textit{N} bytes são referentes aos dados do quadro, que variam de acordo com o tipo de quadro enviado, contudo, esta parte inicia com um byte de identificação e prossegue com seus \textit{N} bytes de dados. Por fim, é enviado um byte de \textit{checksum}, este byte é utilizado para verificar a integridade dos componentes\cite{xbeetutorial}.       
 
 \begin{figure}[!htb]
 	\centering
@@ -289,20 +289,20 @@ A Figura \ref{fig:xbeeframe} exibe alguns quadros que podem ser enviados nos mó
 \section{Software}
 \label{sec:software}
 
-O \textit{software} é parte essencial deste trabalho. Todas as grandezas adquiridas pelos sensores apresentados na seção \ref{sec:sensores} e concentrados nos microcontroladores revisados na seção \ref{sec:microcontroladores} devem ser submetidas a um \textit{software} para transformação destes dados em informações. As seções a seguir revisam qual tarefa cada sub sistema deve realizar para alcançar os objetivos propostos na seção \ref{sec:objetivos}.  
+O \textit{software} é parte essencial deste trabalho. Todas as grandezas adquiridas pelos sensores apresentados na Seção \ref{sec:sensores} e concentrados nos microcontroladores revisados na Seção \ref{sec:microcontroladores} devem ser submetidas a um \textit{software} para transformação destes dados em informações. As seções a seguir revisam qual tarefa cada sub sistema deve realizar para alcançar os objetivos propostos na Seção \ref{sec:objetivos}.  
 
 \subsection{Aquisição de dados}
 \label{sec:aquisicaodedados}
 
 O \textit{software} de aquisição de dados é a primeira interação dos dados vindos dos sensores com algum tipo de tratamento. Este subsistema não é o foco deste trabalho, porém ele deve ser revisado pois caso o \textit{software} principal traga alguma mudança substancial na forma de tratamento dos dados, os subsistemas de aquisição dentro dos microcontroladores deve ser atualizado para satisfazer quaisquer novos requisitos.
 
-Este subsistema é produzido por três motivos: ele deve realizar a comunicação entre múltiplos microcontroladores em caso de uso de arquitetura distribuída, realizar qualquer cálculo inicial para demonstração de informações no painel e ele deve preparar os dados para passagem para o subsistema de tratamento de dados \cite{racecarInstrumentationFor2012}\cite{projetoMiniBaja2006}\cite{designAndImplementation2015}\cite{Dias2010}\cite{Nunes2016}. A Figura \ref{fig:aquisicaodiagrama} demonstra como este subsistema funciona, os sensores capturam as grandezas desejadas e enviam os dados para o SCOB via chicote elétrico. As saídas dos sensores são conectadas nas entradas digitais ou analógicas do microcontrolador. O \textit{software} atual é feito em C e utiliza a biblioteca padrão do Arduino, visto o uso do Arduino Nano V3. Os dados são armazenados em variáveis e a cada ciclo do programa, os mesmos são enviados via ZigBee.      
+Este subsistema é produzido por três motivos: ele deve realizar a comunicação entre múltiplos microcontroladores em caso de uso de arquitetura distribuída, realizar qualquer cálculo inicial para demonstração de informações no painel e ele deve preparar os dados para passagem para o subsistema de tratamento de dados \cite{racecarInstrumentationFor2012}\cite{projetoMiniBaja2006}\cite{designAndImplementation2015}\cite{Dias2010}\cite{Nunes2016}. A Figura \ref{fig:aquisicaodiagrama} exibe como este subsistema funciona, os sensores capturam as grandezas desejadas e enviam os dados para o SCOB via chicote elétrico. As saídas dos sensores são conectadas nas entradas digitais ou analógicas do microcontrolador. O \textit{software} atual é feito em C e utiliza a biblioteca padrão do Arduino, visto o uso do Arduino Nano V3. Os dados são armazenados em variáveis e a cada ciclo do programa, os mesmos são enviados via ZigBee.      
 
 \begin{figure}[!htb]
 	\centering
 		\caption{Diagrama exemplificando funcionamento do sistema de aquisição.}
 		\includegraphics[scale=0.5]{aquisicaodiagrama} 
-		\caption*{Fonte: Autor.}
+		\caption*{Fonte: Elaborada pelo autor, 2017.}
 		\label{fig:aquisicaodiagrama}
 \end{figure} 
 
@@ -311,7 +311,10 @@ Este subsistema é produzido por três motivos: ele deve realizar a comunicaçã
 
 O sistema de tratamento de dados deve receber as informações fornecidas pelo meio de transporte de informação, neste caso o módulo ZigBee, e com esses dados atualizar o ambiente e informar a equipe dos boxes dos dados mais importantes sobre o veículo. Este sistema pode ser feito para dados recebidos posteriormente a testes ou com telemetria, sendo feita análises em tempo real. Algumas análises de dados que podem ser realizadas neste \textit{software} seriam torção do chassi, temperatura do motor em relação a velocidade do veículo, tempo de prova, entre outras informações. 
 
-As equipes de automobilismo não divulgam muitas informações sobre seus sistemas de tratamento de dados. A exceção é quando estes sistemas utilizam de plataformas de empresas privadas para codificação destes \textit{software}, nestes casos os artigos comentam que estas plataformas são utilizadas para criação da GUI (Graphical User Interface) e geralmente usadas em conjunto com dispositivos de aquisição de dados também adquiridos de empresas privadas \cite{applicationOfData2010}\cite{vehicleDataAcquisition2014}\cite{designAndImplementation2015}\cite{developmentOfAn2016}. Contudo estas informações não são relevantes para o trabalho proposto na área de tratamento de dados, pois o sistema que deve ser desenvolvido para este fim deve ser projetado e executado junto a equipe Velociraptor com um requisito de baixo custo monetário. Um artigo revisado produziu sua própria plataforma de tratamento de dados em C e C++ \cite{racecarInstrumentationFor2012} e utiliza de alguns conceitos comentados na Seção \ref{sec:aquisicaodedados}, como utilização de \textit{comma-separated values} para formatação dos arquivos de dados. 
+As equipes de automobilismo não divulgam muitas informações sobre seus sistemas de tratamento de dados, isto foi averiguado na revisão bibliográfica feita no Capítulo \ref{ch:trabalhos}. A exceção é quando estes sistemas utilizam de plataformas de empresas privadas para codificação destes \textit{software}, nestes casos os artigos comentam que estas plataformas são utilizadas para criação da GUI (\textit{Graphical User Interface}) e geralmente usadas em conjunto com dispositivos de aquisição de dados também adquiridos de empresas privadas \cite{applicationOfData2010}\cite{vehicleDataAcquisition2014}\cite{designAndImplementation2015}\cite{developmentOfAn2016}. Contudo, estas informações não são relevantes para o trabalho proposto na área de tratamento de dados, pois o sistema que deve ser desenvolvido para este fim deve ser projetado e executado junto a equipe Velociraptor. Um artigo revisado produziu sua própria plataforma de tratamento de dados em C e C++ \cite{racecarInstrumentationFor2012} e utiliza de alguns conceitos comentados na Seção \ref{sec:aquisicaodedados}, como utilização de \textit{comma-separated values} para formatação dos arquivos de dados. 
+
+\section{Conclusões parciais}
+Neste capítulo é feita uma revisão dos conceitos iniciais necessários para entendimento inicial do trabalho. As informações discutidas servem como base para os á criação da proposta no Capítulo \ref{ch:proposta} e são utilizadas no desenvolvimento e nos testes. Por fim, o Capítulo \ref{ch:trabalhos} trás uma discussão do que é estado da arte sobre os temas propostos.  
 
 \begin{comment}
 

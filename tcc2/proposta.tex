@@ -1,7 +1,7 @@
 \chapter{Projeto/Proposta de Solução}
 	\label{ch:proposta}
 
-Os conceitos revisados até este momento foram utilizados para a criação de uma proposta de solução computacional para a equipe baja Velociraptor. Revisando, a equipe tem como principal problema não conseguir obter informações que interessam a cada setor de projeto do veículo de maneira \textbf{intuitiva, simplificada, modular e com armazenamento.} Estes três conceitos são detalhados no Quadro \ref{tab:cenario} a seguir:     
+Os conceitos revisados até este momento foram utilizados para a criação de uma proposta de solução computacional para a equipe baja Velociraptor. Revisando, a equipe tem como principal problema não conseguir obter informações que interessam a cada setor de projeto do veículo de maneira \textbf{intuitiva, simplificada, modular e com armazenamento.} Estes quatro conceitos são detalhados no Quadro \ref{tab:cenario}:     
 
 \begin{table}[!htb]
 	\centering
@@ -50,15 +50,18 @@ O sistema é dividido em duas frentes: a parte de \textbf{aquisição} dos dados
 \subsection{Objetivos Específicos} 
 
 \begin{itemize}[label={-}]
-	\item O sistema deve ser independente em relação ao meio em que os dados são transportados do SCOB para os boxes, desta forma em atualizações futuras o método atual de transferência de dados pode ser substituído;
-	\item O \textit{software} deve ser independente de sistema operacional;
-	\item O \textit{software} deve possuir informações específicas para cada área da engenharia automobilística;
-	\item O \textit{software} deve ser construído de forma a facilitar a manutenção evolutiva, preparado para chegada de novos sensores;
+	\item Modularidade de trasmissão: o sistema deve ser independente em relação ao meio em que os dados são transportados do SCOB para os boxes, desta forma em atualizações futuras o método atual de transferência de dados pode ser substituído;
+	\item Portabilidade: o \textit{software} deve ser independente de sistema operacional;
+	\item Exatidão: o \textit{software} deve possuir informações específicas para cada área da engenharia automobilística; e
+	\item Manutenção: o \textit{software} deve ser construído de forma a facilitar a manutenção evolutiva, preparado para chegada de novos sensores.
 \end{itemize}
 
-Os objetivos específicos devem nortear a produção deste sistema. Atingindo as metas propostas se espera que o objetivo geral do projeto seja alcançado, trazendo essas informações do veículo para a equipe presente nos boxes.
+Os objetivos específicos devem nortear a produção deste sistema. Atingir estas metas propostas é importante para concluir o objetivo geral do projeto, trazendo essas informações do veículo para a equipe presente nos boxes.
 
-\subsection{Mudanças de escopo}
-O projeto teve uma mudança importante no escopo durante seu desenvolvimento e tais mudanças serão apresentadas aqui nesta seção.
+\section{Mudanças de escopo}
+O projeto teve uma mudança importante no escopo durante seu desenvolvimento, estas mudanças são discutidas nesta seção.
 
-Inicialmente, o projeto englobaria telemetria, a criação de um sistema de controle \textit{on-board} e a criação de um \textit{software} de tratamento dos dados provenientes do veículo. Esta ideia possuía um escopo muito amplo para ser feito por apenas uma pessoa em dois semestres, então uma nova proposta foi realizada na qual o foco seria no \textit{software} de tratamento de dados recebendo estes mesmos dados via um \textit{Secure Digital Card}, ou como é normalmente conhecido cartão SD. Este segundo escopo era mais realista em relação ao tempo de execução do projeto, levando em conta o trabalho para a criação do sistema levantando os dados necessários para uma melhor forma de demostrar as grandezas do sistema. Contudo durante reuniões do projeto 2018 do sub-sistema de eletrônica veicular do Velociraptor, foi criado um terceiro escopo de projeto em conjunto com os interesses da equipe e suas prioridades. Neste escopo, que é o atual desenvolvido e testado neste trabalho, o sistema recebe as informações dos sensores via rede sem fio utilizando um par de módulos ZigBee. Este escopo se assemelha muito ao primeiro, porém com o auxilio da equipe de eletrônica para fabricação das placas de teste, a ideia enfim se tornou viável.
+Inicialmente, o projeto englobaria telemetria, a criação de um sistema de controle \textit{on-board} e a criação de um \textit{software} de tratamento dos dados provenientes do veículo. Esta ideia possuía um escopo muito amplo para ser feito por apenas uma pessoa em dois semestres, então uma nova proposta foi realizada na qual o foco seria no \textit{software} de tratamento de dados recebendo estes mesmos dados via um \textit{Secure Digital Card}, ou como é normalmente conhecido cartão SD. Este segundo escopo era mais realista em relação ao tempo de execução do projeto, levando em conta o trabalho para a criação do sistema levantando os dados necessários para uma melhor forma de demostrar as grandezas do sistema. Contudo, durante reuniões do projeto 2018 do sub-sistema de eletrônica veicular do Velociraptor, foi criado um terceiro escopo de projeto em conjunto com os interesses da equipe e suas prioridades. Neste escopo, que é o atual desenvolvido e testado neste trabalho, o sistema recebe as informações dos sensores via rede sem fio utilizando um par de módulos ZigBee. Este escopo se assemelha muito ao primeiro, porém com o auxílio da equipe de eletrônica para fabricação das placas de teste, a ideia enfim se tornou viável.
+
+\section{Conclusões parciais}
+Tendo este escopo de projeto bem definido, os próximos passos são desenvolver a aplicação e testar. No Capítulo \ref{ch:desenvolvimento} é discutido sobre como os requisitos levantados são transformados em um programa de fato. Para tal, é necessário levar em consideração todo o conhecimento obtido nos Capítulos \ref{ch:fundamentacao} e \ref{ch:trabalhos}, tanto na questão de embassamento teórico como também sobre os conceitos aprendidos.  
