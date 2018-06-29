@@ -74,7 +74,7 @@ Sendo $V$ é a velocidade final mostrada no painel, $S_{vel}$ é o número de ve
 \begin{figure}[!htb]
 	\centering
 		\caption{Sensor de velocidade conectado próximo ao freio traseiro.}
-		\includegraphics[scale=0.5]{sensorVelocidadeEx} 
+		\includegraphics[scale=0.7]{sensorVelocidadeEx} 
 		\caption*{Fonte: UDESC Baja Velociraptor, 2017.}
 		\label{fig:sensorVelocidadeEx}
 \end{figure} 
@@ -109,7 +109,7 @@ Para obter essas informações do câmbio foi utilizado um sensor MLX90614 (Figu
 	\caption{Sensor MLX90614 e seu funcionamento.}
 	\subfigure[Fonte:Google Imagens][Sensor MLX90614. Fonte:\cite{tempcvt}]{\includegraphics[width=3cm]{sensorCvt}\label{fig:sensorCvtimg}}
 	\qquad
-	\subfigure[Fonte:\cite{Fraden2016}][Exemplo do funcionamento. Fonte:\cite{Fraden2016}]{\includegraphics[width=5cm]{sensorCvtfunc}\label{fig:sensorCvtfunc}}
+	\subfigure[Fonte:\cite{Fraden2016}][Exemplo do funcionamento. Fonte:\cite{Fraden2016} modificada pelo autor, 2018]{\includegraphics[width=5cm]{sensorCvtfunc}\label{fig:sensorCvtfunc}}
 	\label{fig:sensorCvt}
 \end{figure}
 
@@ -242,9 +242,9 @@ Os modelos Raspberry Pi 3 Model B, BeagleBone Green e BeagleBone Black Rev.C pos
 
 Estas metas são atingidas com um porém. O ZigBee não atua em taxas de transferência de dados de outros protocolos como o WiFi por exemplo. O Quadro \ref{tab:protocolscomparition} apresenta uma comparação entre alguns parâmetros destes dois protocolos, o que deixa explícito que ambos possuem enfoques diferentes e são utilizados para aplicações diferentes.
 
-\begin{table}[]
+\begin{table}[!htb]
 \centering
-\caption{Comparação de alguns parâmetros dos protocolos 802.11b e 802.15.4.}
+\caption{Comparação de alguns parâmetros dos protocolos 802.11g e 802.15.4.}
 \label{tab:protocolscomparition}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -313,8 +313,8 @@ O sistema de tratamento de dados deve receber as informações fornecidas pelo m
 
 As equipes de automobilismo não divulgam muitas informações sobre seus sistemas de tratamento de dados, isto foi averiguado na revisão bibliográfica feita no Capítulo \ref{ch:trabalhos}. A exceção é quando estes sistemas utilizam de plataformas de empresas privadas para codificação destes \textit{software}, nestes casos os artigos comentam que estas plataformas são utilizadas para criação da GUI (\textit{Graphical User Interface}) e geralmente usadas em conjunto com dispositivos de aquisição de dados também adquiridos de empresas privadas \cite{applicationOfData2010}\cite{vehicleDataAcquisition2014}\cite{designAndImplementation2015}\cite{developmentOfAn2016}. Contudo, estas informações não são relevantes para o trabalho proposto na área de tratamento de dados, pois o sistema que deve ser desenvolvido para este fim deve ser projetado e executado junto a equipe Velociraptor. Um artigo revisado produziu sua própria plataforma de tratamento de dados em C e C++ \cite{racecarInstrumentationFor2012} e utiliza de alguns conceitos comentados na Seção \ref{sec:aquisicaodedados}, como utilização de \textit{comma-separated values} para formatação dos arquivos de dados. 
 
-\section{Conclusões parciais}
-Neste capítulo é feita uma revisão dos conceitos iniciais necessários para entendimento inicial do trabalho. As informações discutidas servem como base para os á criação da proposta no Capítulo \ref{ch:proposta} e são utilizadas no desenvolvimento e nos testes. Por fim, o Capítulo \ref{ch:trabalhos} trás uma discussão do que é estado da arte sobre os temas propostos.  
+\section{Conclusão de capítulo}
+Neste capítulo é feita uma revisão dos conceitos iniciais necessários para entendimento do trabalho. As informações discutidas servem como base para os a criação da proposta no Capítulo \ref{ch:proposta} e são utilizadas no desenvolvimento e nos testes. Por fim, o Capítulo \ref{ch:trabalhos} trás uma discussão do que é estado da arte sobre os temas propostos.  
 
 \begin{comment}
 
